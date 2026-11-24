@@ -1313,3 +1313,6 @@ html.is-print .stage-big{display:none!important}
 .stage-ui{z-index:3}
 .thumb[data-ref="prec-margiela"]{background:#F4F3F0}
 .thumb[data-ref="prec-margiela"] img{object-fit:contain!important;object-position:center!important}
+/* 인쇄·PDF에서는 이름 후보 화면을 뺀다 */
+html.is-print #namesView{display:none!important}
+@media print{#namesView{display:none!important}}
