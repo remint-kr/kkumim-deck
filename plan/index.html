@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>꾸밈 My [ ] 소개서</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- 본문·제목: Pretendard -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<!-- 괄호 안에서 돌아가는 낱말만 여러 글꼴 -->
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&family=Caveat:wght@700&family=DM+Serif+Display&family=Do+Hyeon&family=Gaegu:wght@700&family=IBM+Plex+Mono:wght@500;600&family=Jua&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@900&family=Pacifico&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="plan.css">
+</head>
+<body>
+
+<div class="prog" aria-hidden="true"><i id="prog"></i></div>
+
+<nav class="rail" aria-label="장 목차">
+  <a href="#c0" class="rail-mk" aria-label="표지로"><span class="kk" data-logo></span><span class="rail-my">My</span><span class="kb"><span class="slot"></span></span></a>
+  <ol id="railList"></ol>
+  <span></span>
+</nav>
+<div class="mtop">
+  <a href="#c0" aria-label="표지로" class="mk" data-mark="plain"></a>
+  <button type="button" id="idxBtn" aria-expanded="false" aria-controls="idx"><b id="idxNow">00 / 13</b> 목차</button>
+</div>
+<nav class="idx" id="idx" aria-label="장 목차"><ol id="idxList"></ol></nav>
+
+<main>
+
+<!-- ═══ 인트로 영상 — 파일: ../intro/kkumim-intro.mp4, 정지 이미지: ../intro/kkumim-intro-poster.jpg ═══ -->
+<section class="ch bg-ink intro" id="cv" data-n="▶" data-t="인트로 영상">
+  <div class="view" data-view>
+    <div class="stage" id="introStage">
+      <img class="stage-poster" id="introPoster" src="../intro/kkumim-intro-poster.jpg" alt="꾸밈 인트로 영상 정지 화면">
+      <video id="introVid" playsinline preload="metadata" muted poster="../intro/kkumim-intro-poster.jpg"></video>
+      <div class="stage-empty" aria-hidden="true"><span class="lock"><span class="kk" data-logo></span><span class="my">My</span><span class="kb"><span class="rotbox"><span class="rot" data-rot></span></span></span></span></div>
+      <div class="stage-ui">
+        <button type="button" id="introPlay">재생</button>
+        <button type="button" id="introSound" aria-pressed="false">소리 켜기</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 00 꾸밈 My [ ] ═══ -->
+<section class="ch cover" id="c0" data-n="00" data-t="꾸밈 My [ ]">
+  <div class="view" data-view>
+    <div class="wrap cover-in">
+      <div class="cover-top"><span>꾸밈 소개서</span><span>2026. 11</span></div>
+      <div class="cover-mid">
+        <h1 class="sr">꾸밈 My [ ] 소개서</h1>
+        <div class="lock hero">
+          <span class="kk" data-logo></span><span class="my">My</span>
+          <label class="kb"><span class="sr">괄호 안에 넣을 이름</span><span class="rotbox"><span class="rot" data-rot></span><input class="kin" id="coverIn" data-win type="text" maxlength="8" value="" autocomplete="off" autocapitalize="off" spellcheck="false"></span><span class="stack" data-stack aria-hidden="true"></span></label>
+        </div>
+        <p class="cover-sub" id="coverSlogan" data-slogan></p>
+        <p class="cover-line">나의 스타, 팬, 가족, 펫, 차. 소중한 것을 위한 주문 제작(커스텀)입니다.</p>
+      </div>
+      <div class="cover-bot">
+        <p class="chips"><span>괄호 안에 소중한 이름을 직접 적어 보세요.</span><button type="button" data-set="Star">Star</button><button type="button" data-set="Fan">Fan</button><button type="button" data-set="Family">Family</button><button type="button" data-set="Pet">Pet</button><button type="button" data-set="Car">Car</button><button type="button" data-set="최애">최애</button><button type="button" data-set="" class="again">다시 돌리기</button></p>
+        <span class="keys">→ ← 키로 넘깁니다</span>
+      </div>
+    </div>
+  </div>
+  <div class="view plate solo bg-ink" data-view>
+    <div class="wrap">
+      <div class="solo-in">
+        <div class="solo-t">
+          <p class="eyebrow">꾸밈이 만드는 것</p>
+          <h3 class="say sm">이름을 새기면<br>하나뿐인 물건이<br>됩니다.</h3>
+          <p class="lead">똑같은 옷도 이름 석 자가 들어가면 그 사람만의 옷이 됩니다. 꾸밈은 그 일을 합니다.</p>
+        </div>
+        <div class="pl-row" data-plates="bx-3-1" data-big="1"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 01 꾸밈이 하는 일 ═══ -->
+<section class="ch bg-ink" id="c1" data-n="01" data-t="꾸밈이 하는 일">
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="rec"><span class="mk" data-mark></span><span>No. 01 꾸밈이 하는 일</span></div>
+      <h2 class="say">꾸밈은<br>꾸며 주는 곳입니다.</h2>
+      <p class="eq"><span>꾸밈</span><i>=</i><span>꾸미다</span><i>=</i><span>커스텀</span></p>
+      <p class="lead">옷, 키링, 인형, 가죽 소품에 소중한 이름과 상징을 새겨 드립니다. 무엇을 새길지는 고객이 정합니다. 그래서 이름이 ‘꾸밈 My [ ]’입니다. 괄호 안은 고객이 채웁니다.</p>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">괄호 안에는 나의 소중한 것이 들어갑니다.</h3>
+      <ul class="who six" aria-label="괄호 안에 들어오는 것들">
+        <li><span class="lock"><span class="my">My</span><span class="kb"><span class="fill">Star</span></span></span><small>나의 스타에게</small></li>
+        <li><span class="lock"><span class="my">My</span><span class="kb"><span class="fill">Fan</span></span></span><small>팬끼리, 팬에게</small></li>
+        <li><span class="lock"><span class="my">My</span><span class="kb"><span class="fill">Family</span></span></span><small>가족에게</small></li>
+        <li><span class="lock"><span class="my">My</span><span class="kb"><span class="fill">Pet</span></span></span><small>반려동물에게</small></li>
+        <li><span class="lock"><span class="my">My</span><span class="kb"><span class="fill">Car</span></span></span><small>내 차에</small></li>
+        <li><span class="lock"><span class="my">My</span><span class="kb"><span class="fill">최애</span></span></span><small>내가 가장 아끼는 것에</small></li>
+      </ul>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <dl class="kv wide">
+        <div><dt>무엇을 하나</dt><dd><b>고급 주문 제작입니다.</b>자수, 각인, 가죽, 금속으로 이름과 상징을 새겨 드립니다.</dd></div>
+        <div><dt>어디까지 가나</dt><dd><b>커스텀샵의 올리브영이 되려 합니다.</b>꾸밈 물건을 들고 다니고 선물하는 일이 당연해지는 것이 목표입니다.</dd></div>
+        <div><dt>좋은 점 하나</dt><dd><b>광고 없이 퍼집니다.</b>선물을 받은 사람이 자랑하고, 그걸 본 사람이 주문합니다.</dd></div>
+        <div><dt>좋은 점 둘</dt><dd><b>재고 부담이 작습니다.</b>주문을 받고 나서 만듭니다.</dd></div>
+      </dl>
+    </div>
+  </div>
+  <div class="view plate" data-view>
+    <div class="wrap">
+      <div class="pl-row" data-plates="bx-3-2,bx-4-4,bx-5-5" data-labels="수놓다|새기다|달다"></div>
+      <div class="pl-say"><p>옷에는 수놓고, 금속에는 새기고, 가방에는 답니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 02 왜 지금인가 ═══ -->
+<section class="ch" id="c2" data-n="02" data-t="왜 지금인가">
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="rec"><span class="mk" data-mark></span><span>No. 02 왜 지금인가</span></div>
+      <h2 class="h1">사람들은 이미<br>꾸미고 있습니다.</h2>
+      <p class="lead">가방에 키링을 달고, 옷에 이름을 새깁니다. 숫자로 보겠습니다.</p>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="led flush">
+        <div class="led-r">
+          <div class="num">+50<small>% 이상</small></div>
+          <div><p>자주(JAJU)가 파자마에 이니셜을 새겨 주기 시작하자 그 파자마 매출이 1년 전보다 50% 넘게 늘었습니다. 5개 매장에서 해 보고 96개 매장으로 넓혔습니다.</p></div>
+          <span class="thumb" data-ref="fan-03"></span>
+        </div>
+        <div class="led-r">
+          <div class="num">+178<small>%</small></div>
+          <div><p>29CM에서 키링 거래액이 1년 사이 178% 늘었습니다. 인형 키링도 28% 늘었습니다.</p></div>
+          <span class="thumb" data-ref="fan-06"></span>
+        </div>
+        <div class="led-r">
+          <div class="num">80<small>% 이상</small></div>
+          <div><p>일본 15~24세 여성 10명 중 8명이 인형을 데리고 다니며 사진을 찍어 봤습니다. 70%는 “부적을 지닌 느낌”이라고 답했습니다.</p></div>
+          <span class="thumb" data-ref="fan-05"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="led flush nothumb">
+        <div class="led-r">
+          <div class="num">8<small>배 이상</small></div>
+          <div><p>가방에 다는 인형 하나로 팝마트 ‘더 몬스터즈’ 매출이 2024년에 8배 넘게 뛰었습니다.</p></div>
+        </div>
+      </div>
+      <div class="flowline">
+        <h3 class="h3">꾸미는 자리가 다이어리에서 가방으로 옮겨 왔습니다.</h3>
+        <div>
+          <p class="p">네이버쇼핑에서 ‘다이어리 꾸미기’ 검색은 69% 줄고 ‘텀블러 꾸미기’는 30% 늘었습니다. 밖에 들고 다니는 물건은 사진에 찍힙니다. 이름이 들어가면 사람들이 물어봅니다.</p>
+          <p class="p" style="margin-top:14px"><b>이름을 새긴 고급 맞춤의 한국 숫자는 꾸밈이 첫 판매부터 직접 쌓습니다.</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 03 시장 크기 — 숫자 근거는 research/2026-11-23-굿즈커스텀-시장.md (확인된 것만) ═══ -->
+<section class="ch bg-paper" id="c3" data-n="03" data-t="시장 크기">
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="rec"><span class="mk" data-mark></span><span>No. 03 시장 크기</span></div>
+      <h2 class="h1">팬은 이미 굿즈에<br>큰돈을 씁니다.</h2>
+      <p class="lead">그 돈은 해마다 늘고 있습니다. 그런데 ‘내 이름이 새겨진 고급 굿즈’를 파는 곳은 아직 없습니다.</p>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="led flush nothumb">
+        <div class="led-r">
+          <div class="num">+75<small>%</small></div>
+          <div><p>하이브의 굿즈 매출이 2년 만에 75% 늘었습니다. 2023년 3,256억 원에서 2025년 5,706억 원이 됐습니다. 전체 매출에서 굿즈가 차지하는 몫도 15%에서 21.5%로 커졌습니다.</p></div>
+        </div>
+        <div class="led-r">
+          <div class="num sm">1,885<small>억 원</small></div>
+          <div><p>JYP가 2025년 한 해에 굿즈로 번 돈입니다.</p></div>
+        </div>
+        <div class="led-r">
+          <div class="num">70<small>억 원 이상</small></div>
+          <div><p>더현대 서울에서 버추얼 아이돌 세 팀이 팝업을 열었습니다. 10만 명 넘게 왔고 70억 원 넘게 팔렸습니다. 2024년 2~3월의 일입니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="led flush nothumb">
+        <div class="led-r">
+          <div class="num sm">1,070<small>억 원</small></div>
+          <div><p>BTS 북미 투어에서 굿즈 판매 현장을 찾은 팬이 100만 명입니다. 굿즈 약 200만 개, 1,070억 원어치가 팔렸습니다.</p></div>
+        </div>
+        <div class="led-r">
+          <div class="num sm">1,940<small>만 명</small></div>
+          <div><p>일본에서 ‘최애 활동’을 하는 사람입니다. 15~69세 4명 중 1명입니다. 한 해에 약 4조 엔을 씁니다. 1년 전에는 3.5조 엔이었습니다.</p></div>
+        </div>
+        <div class="led-r">
+          <div class="num">+38<small>%</small></div>
+          <div><p>일본 봉제인형 시장이 1년 만에 38% 커져 624억 엔이 됐습니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="led flush nothumb">
+        <div class="led-r">
+          <div class="num sm">1,618<small>억 달러</small></div>
+          <div><p>세계에서 한 해 팔리는 캐릭터·연예 상품입니다. 가장 빨리 크는 곳은 한국, 일본, 중국이 있는 북아시아입니다. 1년에 14.1% 컸습니다.</p></div>
+        </div>
+        <div class="led-r">
+          <div class="num">8<small>배</small></div>
+          <div><p>가방에 다는 인형으로 큰 팝마트의 매출이 4년 만에 8배가 됐습니다. 2025년에는 봉제 제품이 매출의 절반이었습니다. 동남아 매출은 2024년 한 해에 7배가 됐습니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">고객이 채우는 물건을 파는 회사들은 이렇게 컸습니다.</h3>
+      <div class="grow" id="grow"></div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">꾸밈 앞에는 시장이 세 겹 있습니다.</h3>
+      <div class="layers">
+        <div class="l1"><i>넓은 시장</i><b>40조 원대</b><p>세계에서 이름을 새긴 선물에 한 해 쓰는 돈입니다. 10년 뒤에는 두 배 가까이 됩니다.</p></div>
+        <div class="l2"><i>닿을 수 있는 시장</i><b>1조 원 넘게</b><p>같은 손님이 같은 종류의 물건에 이미 쓰는 돈입니다. 한국 기획사 굿즈, 일본 봉제인형, 마플을 더했습니다.</p></div>
+        <div class="l3"><i>처음 노리는 시장</i><b>약 20억 원</b><p>꾸밈의 3년차 목표입니다. 시장이 작아서 못 크는 일은 없습니다.</p></div>
+      </div>
+      <p class="fine">원화로 바꾼 값과 더한 값은 어림입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 04 자랑하면 퍼집니다 ═══ -->
+<section class="ch" id="c4" data-n="04" data-t="자랑하면 퍼집니다">
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="rec"><span class="mk" data-mark></span><span>No. 04 자랑하면 퍼집니다</span></div>
+      <h2 class="h1">받으면 자랑하고,<br>자랑하면 퍼집니다.</h2>
+      <p class="lead">이름이 새겨진 물건을 보면 사람들이 묻습니다. 누가 줬는지, 무슨 뜻인지. 올리는 사람도 퍼뜨리는 사람도 고객입니다.</p>
+      <div class="steps3" aria-label="선물, 자랑, 퍼짐">
+        <span class="kb"><b>선물</b></span><span class="ar">→</span><span class="kb"><b>자랑</b></span><span class="ar">→</span><span class="kb"><b>퍼짐</b></span>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">보통 사람들이 먼저 하고 있습니다.</h3>
+      <p class="lead">친구끼리 맞춰 들고, 이름을 새기고, 사진을 올립니다.</p>
+      <div class="tiles">
+        <figure class="tile" data-ref="fan-01"><figcaption><b>우정 팔찌</b><p>공연 관객들이 이름 구슬 팔찌를 만들어 서로 바꿉니다. 미국 공예 체인 마이클스의 장신구 매출이 40% 넘게 늘었습니다.</p></figcaption></figure>
+        <figure class="tile" data-ref="fan-03"><figcaption><b>파자마 이니셜</b><p>자주 매장에서 이니셜을 새겨 줍니다. 그 파자마 매출이 50% 넘게 늘었습니다.</p></figcaption></figure>
+        <figure class="tile" data-ref="fan-04"><figcaption><b>네컷 사진</b><p>친구, 연인, 팬끼리 찍어 올립니다. 무인 사진관이 1,006곳에서 3,000곳 넘게 늘었습니다.</p></figcaption></figure>
+        <figure class="tile" data-ref="fan-05"><figcaption><b>인형과 외출</b><p>일본 15~24세 여성 10명 중 8명이 인형을 데리고 다니며 사진을 찍어 봤습니다.</p></figcaption></figure>
+        <figure class="tile" data-ref="bx-5-5"><figcaption><b>가방 꾸미기</b><p>가방에 키링과 인형을 답니다. 29CM 키링 거래액이 178% 늘었습니다.</p></figcaption></figure>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">유명인이 한 번 걸치자<br>작은 가게가 품절됐습니다.</h3>
+      <p class="lead">이름을 새긴 물건, 가방에 단 물건이 사진 한 장으로 퍼졌습니다.</p>
+      <div class="tiles four">
+        <figure class="tile" data-ref="case-01"><figcaption><b>테일러 스위프트의 맞춤 팔찌</b><p>‘TNT’ 글자를 넣은 팔찌입니다. 만든 곳은 직원 8명의 보석상입니다. 가게 대표는 2주 동안 매출이 2,000% 넘게 늘었다고 밝혔습니다.</p></figcaption></figure>
+        <figure class="tile" data-ref="case-04"><figcaption><b>조지 왕자의 가운</b><p>이름을 새긴 약 27~30파운드짜리 가운입니다. 사진이 공개되고 몇 분 만에 품절됐습니다.</p></figcaption></figure>
+        <figure class="tile" data-ref="case-02"><figcaption><b>메건 마클의 이니셜 목걸이</b><p>아들 이니셜 ‘A’를 단 목걸이입니다. 주문이 몰려 홈페이지가 두 번 멈췄습니다.</p></figcaption></figure>
+        
+        <figure class="tile" data-ref="case-05"><figcaption><b>영화 ‘마티 슈프림’ 재킷</b><p>받을 사람을 배우가 직접 골랐다고 디자이너가 밝힌 재킷입니다. 250달러짜리가 4,000달러 넘게 되팔렸습니다.</p></figcaption></figure>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="duo">
+        <div class="tiles two">
+          <figure class="tile" data-ref="case-07"><figcaption><b>장원영</b><p>팬이 준 목걸이를 6년째 하고 있다고 보도됐습니다.</p></figcaption></figure>
+          <figure class="tile" data-ref="case-08"><figcaption><b>박은빈</b><p>팬이 준 가방과 토끼 키링을 들고 공항에 나왔습니다. 패션지가 “팬이 선물해 준 아이템”으로 소개했습니다.</p></figcaption></figure>
+        </div>
+        <div>
+          <h3 class="h2">꾸밈은 두 길로 갑니다.</h3>
+          <ol class="ways">
+            <li>스타가 걸치고 자랑하는 길.</li>
+            <li>팬끼리 맞춰 들고 자랑하는 길.</li>
+          </ol>
+          <p class="p" style="margin-top:22px">해외에서는 숫자로 확인된 일입니다. 한국에서는 꾸밈이 먼저 만들 자리입니다.</p>
+          <p class="note">꾸밈은 주문마다 자랑이 올라왔는지 기록합니다. 자랑 1건이 주문을 몇 건 데려왔는지도 셉니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 05 비어 있는 자리 ═══ -->
+<section class="ch bg-paper" id="c5" data-n="05" data-t="비어 있는 자리">
+  <div class="view top" data-view>
+    <div class="wrap">
+      <div class="rec"><span class="mk" data-mark></span><span>No. 05 비어 있는 자리</span></div>
+      <h2 class="h2">주문 제작은 잘 팔립니다.<br>남는 돈은 회사마다 다릅니다.</h2>
+      <p class="lead">먼저 국내 1등 마플의 4년입니다. 연도를 눌러 보세요.</p>
+      <div class="mp" id="mp">
+        <div>
+          <div class="mp-axis"><span>위는 매출</span><span>아래는 영업이익. 빗금은 손실입니다.</span></div>
+          <div class="mp-cols" id="mpCols" role="group" aria-label="마플 연도별 매출과 영업이익"></div>
+        </div>
+        <aside class="mp-side" aria-live="polite">
+          <div class="yr" id="mpYr">2025</div>
+          <p class="say2" id="mpSay"></p>
+          <dl id="mpDl"></dl>
+        </aside>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="read3 flush">
+        <div><b>사려는 사람은 많습니다.</b><p>주문 제작만으로 한 해 340억~500억 원이 팔립니다. 2023년 거래는 92만 건이었습니다.</p></div>
+        <div><b>싸게 많이 팔면 적게 남습니다.</b><p>최근 3년 영업이익률이 −4%에서 +2% 사이였습니다.</p></div>
+        <div><b>싼 품목을 줄이자 흑자가 났습니다.</b><p>2025년 마플은 매출이 32% 줄었는데 이익은 흑자로 돌아섰습니다.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">고객이 채우게 한 회사들은 많이 남깁니다.</h3>
+      <div class="versus">
+        <div>
+          <span class="cap2">마플 2025</span>
+          <p class="thin">고객 그림을 찍어 주는 곳</p>
+          <div class="big">2.2<small>% 영업이익률</small></div>
+          <p class="sub">매출 343억 원, 영업이익 7.5억 원.</p>
+        </div>
+        <div>
+          <div class="frames">
+            <div><b>Build-A-Bear</b><div class="big">12.7<small>% 세전이익률</small></div><p>고객이 직접 채워 만드는 곰 인형. 매출 5억 2,980만 달러.</p></div>
+            <div><b>Crocs 지비츠</b><div class="big">2.5<small>억 달러 이상</small></div><p>신발 구멍에 고객이 골라 끼우는 장식. 한 해에 이만큼 팔립니다.</p></div>
+            <div><b>Casetify</b><div class="big">3<small>억 달러 이상</small></div><p>고객 사진으로 만드는 폰 케이스에서 시작했습니다. 2022년 매출입니다.</p></div>
+          </div>
+        </div>
+      </div>
+      <p class="note">영업이익률과 세전이익률은 재는 기준이 조금 다릅니다. 방향만 봐 주세요.</p>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">케이스티파이도 맞춤 하나로 시작했습니다.</h3>
+      <p class="lead">2011년 홍콩에서 인스타그램 사진으로 케이스를 만들어 주며 시작했습니다. 2022년까지 1,500만 개 넘게 팔았습니다. 그다음에 협업으로 키웠습니다.</p>
+      <div class="tiles four">
+        <figure class="tile" data-ref="frame-01"><figcaption><b>시작</b><p>20만 달러쯤으로 시작해 2020년 매출 1억 2,500만 달러를 넘겼습니다.</p></figcaption></figure>
+        <figure class="tile" data-ref="frame-02"><figcaption><b>매장</b><p>매장에서 30분이면 맞춤 케이스가 나옵니다. 2022년 매출 3억 달러 이상.</p></figcaption></figure>
+        <figure class="tile" data-ref="frame-03"><figcaption><b>협업</b><p>작가 300명 이상이 함께합니다. 팔릴 때마다 수익을 나눕니다. 180개국 이상에서 팝니다.</p></figcaption></figure>
+        <figure class="tile" data-ref="frame-04"><figcaption><b>Nike By You</b><p>큰 회사도 합니다. 운동화에 별명과 좌우명을 넣어 줍니다.</p></figcaption></figure>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">꾸밈의 자리는 비어 있습니다.</h3>
+      <div class="map" role="img" aria-label="브랜드의 힘과 주인공이 누구인지로 나눈 자리표">
+        <div><div><b>젠틀몬스터</b><p>브랜드가 강합니다. 주인공은 브랜드가 만든 물건입니다.</p></div></div>
+        <div class="us"><div><span class="lock"><span class="kk" data-logo></span><span class="my">My</span><span class="kb"><span class="rotbox"><span class="rot" data-rot></span></span></span></span><p style="margin-top:14px">브랜드가 강합니다. 주인공은 고객의 이름입니다. 이 자리에 아직 아무도 없습니다.</p></div></div>
+        <div class="none"><div><b style="color:var(--fg)">케이스티파이</b><p>브랜드 물건 위에 고객 그림을 올립니다. 꾸밈과 가장 가까운 선배입니다.</p></div></div>
+        <div><div><b>마플</b><p>고객 그림을 찍어 주는 공장입니다. 크리에이터가 팬에게 팝니다.</p></div></div>
+      </div>
+      <div class="map-ax"><span>← 주인공이 브랜드</span><span>주인공이 고객 →</span></div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">가격대에도 자리가 있습니다.</h3>
+      <p class="lead">이름을 수놓은 맨투맨은 국내에서 3.5만~5.2만 원에 팔립니다. 그 위 가격대는 찾기 어렵습니다.</p>
+      <div class="first">
+        <div class="prices"><span>59,000</span><span>79,000</span><span>109,000</span></div>
+        <div><b>꾸밈이 걸어 볼 값입니다.</b><p>견본이 나오면 이 세 가격을 실제로 걸어 봅니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 06 이름과 괄호 ═══ -->
+<section class="ch bg-ink" id="c6" data-n="06" data-t="이름과 괄호">
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="rec"><span class="mk" data-mark></span><span>No. 06 이름과 괄호</span></div>
+      <h2 class="h1">‘밈’의 ㅁ을 열면<br>괄호가 됩니다.</h2>
+      <div class="open3">
+        <div><span class="g gm">ㅁ</span><b>‘밈’의 받침 ㅁ</b><p>꾸밈이라는 글자 안에 네모 칸이 하나 있습니다.</p></div>
+        <div><span class="g"><span class="kb"><span class="slot"></span></span></span><b>위아래를 엽니다</b><p>ㅁ이 [ ]가 됩니다.</p></div>
+        <div><span class="g"><span class="kb"><span class="rotbox"><span class="rot" data-rot></span></span></span></span><b>고객이 채웁니다</b><p>괄호 안에 올 말은 고객이 정합니다.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">꾸밈은 세 군데에서 보입니다.</h3>
+      <div class="three">
+        <div><i>①</i><b>꾸밈 My [ ]</b><p>광고, 사이트, 포장에 씁니다. 괄호 안에는 늘 고객의 이름이 들어갑니다.</p></div>
+        <div><i>②</i><b>작은 괄호 표시</b><p>물건에는 작은 빈 괄호를 남깁니다. 늘 같은 자리, 같은 크기입니다. 나머지 자리는 고객의 이름이 씁니다.</p></div>
+        <div><i>③</i><b>제작 카드</b><p>주문한 날, 밑그림을 확인한 날, 만든 날이 적힌 카드가 물건과 함께 갑니다. 마지막 칸은 받는 사람이 적습니다.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="view plate" data-view>
+    <div class="wrap">
+      <div class="pl-row" data-plates="bx-2-1,bp-257882649-15,bp-258006511-10" data-labels="테이프|쇼핑백|상자"></div>
+      <div class="pl-say"><p>상자를 열면 받는 사람 이름이 먼저 보입니다.</p></div>
+    </div>
+  </div>
+  <div class="view plate" data-view>
+    <div class="wrap">
+      <div class="pl-row" data-plates="be-257882649-7,bp-257882649-12,bp-258290711-3" data-labels="직조 라벨|택|목 안쪽"></div>
+      <div class="pl-say"><p>물건에는 작은 괄호 표시 하나만 답니다.</p></div>
+    </div>
+  </div>
+  <div class="view plate" data-view>
+    <div class="wrap">
+      <div class="pl-row" data-plates="bx-1-2,bx-5-4,bx-1-5" data-mono="bx-5-4" data-pos="bx-1-2=88% center" data-labels="제작 기록|일련번호|안쪽 표기"></div>
+      <div class="pl-say"><p>번호와 날짜를 적은 카드를 함께 드립니다. 하나만 만들었다는 기록입니다.</p></div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <p class="rule1">꾸밈은 흑백만 씁니다.<br>색은 고객의 이름에만 넣습니다.</p>
+      <div class="sw" aria-label="색 견본">
+        <div style="background:#EDEBE6"><b>석고</b></div>
+        <div style="background:#F8F7F3"><b>종이</b></div>
+        <div style="background:#2A2A28;color:#F8F7F3;border:1px solid rgba(248,247,243,.28)"><b>먹</b></div>
+        <div style="background:#BDBAB1"><b>돌</b></div>
+        <div style="background:#FF4A1C"><b>주홍</b></div>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">비워 둬서 유명해진 곳들이 있습니다.</h3>
+      <div class="prec4">
+        <div><b>폴라로이드</b><p>흰 테두리만 봐도 폴라로이드인 줄 압니다. 안의 사진은 내 것입니다.</p></div>
+        <div><b>마르지엘라</b><p>라벨에 이름을 쓰지 않았습니다. 그 빈 라벨이 가장 유명한 표시가 됐습니다.</p></div>
+        <div><b>케이스티파이</b><p>로고는 한 군데에 작게 넣습니다. 나머지는 고객의 그림이 채웁니다.</p></div>
+        <div class="ph"><span class="thumb" data-ref="bx-6-1"></span><b>타이포잔치 2015</b><p>괄호 안을 비워 둔 ‘C( ) T( )’가 그대로 로고였습니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 07 무엇을 만드나 ═══ -->
+<section class="ch bg-paper" id="c7" data-n="07" data-t="무엇을 만드나">
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="rec"><span class="mk" data-mark></span><span>No. 07 무엇을 만드나</span></div>
+      <h2 class="h1">품목은 적게,<br>만듦새는 좋게.</h2>
+      <div class="scene-tabs" id="sceneTabs" role="tablist" aria-label="여섯 장면">
+        <button type="button" role="tab" data-sc="0" class="on">My Star</button><button type="button" role="tab" data-sc="1">My Fan</button><button type="button" role="tab" data-sc="2">My Family</button><button type="button" role="tab" data-sc="3">My Pet</button><button type="button" role="tab" data-sc="4">My Car</button><button type="button" role="tab" data-sc="5">My Self</button>
+      </div>
+      <div class="scene">
+        <span class="lock"><span class="my">My</span><span class="kb"><span class="fill" id="scWord">Star</span></span></span>
+        <div class="scene-t" aria-live="polite">
+          <div><b id="scT"></b><p id="scP"></p></div>
+          <dl>
+            <div><dt>새기는 것</dt><dd id="scA"></dd></div>
+            <div><dt>어울리는 품목</dt><dd id="scB"></dd></div>
+            <div id="scCrow"><dt>이런 사례</dt><dd id="scC"></dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="view wallv" data-view>
+    <div class="wrap">
+      <div class="wall" id="wall"></div>
+      <div class="pl-say"><p>꾸밈이 만들려는 물건의 수준입니다.</p></div>
+    </div>
+  </div>
+  <div class="view top" data-view>
+    <div class="wrap">
+      <div class="strip-h" style="margin-top:0">
+        <h3 class="h2">실제로는 이 정도로 만듭니다.<small>라벨, 자수, 포장, 키링. 꾸밈이 기준으로 삼는 사진 열 장입니다.</small></h3>
+        <div class="strip-nav" data-for="sTop"><button type="button" aria-label="앞으로">←</button><button type="button" aria-label="뒤로">→</button></div>
+      </div>
+    </div>
+    <div class="strip" id="sTop" tabindex="0" aria-label="가장 좋은 10장"></div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h1">주력 상품은 넷입니다.<br>둘로 시작합니다.</h3>
+      <p class="lead">품목마다 꾸밈이 기준으로 삼는 실제 상품을 모았습니다.</p>
+      <ol class="four4" id="four4"></ol>
+    </div>
+  </div>
+  <div id="items"></div>
+</section>
+
+<!-- ═══ 08 주문하는 경험 ═══ -->
+<section class="ch" id="c8" data-n="08" data-t="주문하는 경험">
+  <div class="view top" data-view>
+    <div class="wrap">
+      <div class="rec"><span class="mk" data-mark></span><span>No. 08 주문하는 경험</span></div>
+      <h2 class="h1">첫 화면에는<br>괄호 하나만 있습니다.</h2>
+      <p class="lead">아래 화면은 실제로 움직입니다. 괄호에 이름을 적고, 품목을 고르고, <b>꾸밈</b>을 눌러 보세요.</p>
+      <div class="demo" id="demo">
+        <div class="bbar"><i></i><i></i><i></i><span>kku-mim</span></div>
+        <div class="demo-in">
+          <div class="demo-ask">
+            <p class="q">누구를 위해 꾸밀까요? 괄호 안에 적어 주세요.</p>
+            <div class="lock" data-max="3.4">
+              <span class="kk" data-logo></span><span class="my">My</span>
+              <label class="kb"><span class="sr">새길 이름</span><input class="kin fill" id="demoIn" data-win type="text" maxlength="8" value="" placeholder="Star" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+            </div>
+            <p class="chips"><button type="button" data-set="Star">Star</button><button type="button" data-set="Fan">Fan</button><button type="button" data-set="Family">Family</button><button type="button" data-set="Pet">Pet</button><button type="button" data-set="Car">Car</button><button type="button" data-set="최애">최애</button></p>
+          </div>
+          <div class="demo-items" id="demoItems">
+            <button type="button" class="it sel" data-it="sweat" aria-pressed="true"><i>01</i><b>수놓다</b><span>자수 의류</span></button>
+            <button type="button" class="it" data-it="key" aria-pressed="false"><i>02</i><b>새기다</b><span>각인 키링</span></button>
+            <div class="it lockd"><i>03</i><b>달다</b><span>인형 키링 · 주문이 모이면 열립니다</span></div>
+          </div>
+          <div class="demo-foot">
+            <p>메뉴도 배너도 없습니다. 가격은 이름을 정한 다음 화면에 나옵니다.</p>
+            <button type="button" class="go" id="demoGo">꾸밈 <kbd>Enter</kbd></button>
+          </div>
+        </div>
+        <div class="made" id="made" aria-live="polite">
+          <div>
+            <h4>주문을 받았습니다.</h4>
+            <p>이 카드가 물건과 함께 갑니다.</p>
+          </div>
+          <div class="card">
+            <span class="lock" data-max="3"><span class="kk" data-logo></span><span class="my">My</span><span class="kb"><span class="fill" id="madeWord">Star</span></span></span>
+            <ol id="madeSteps">
+              <li class="wait"><span class="kb"><b>1</b></span><span>주문<small>새길 말을 정했습니다</small></span></li>
+              <li class="wait"><span class="kb"><b>2</b></span><span>밑그림 확인<small>놓일 자리와 크기를 보여 드립니다</small></span></li>
+              <li class="wait"><span class="kb"><b>3</b></span><span id="madeHow">수놓음<small>자수 의류</small></span></li>
+              <li class="wait"><span class="kb"><b>4</b></span><span>받은 날<small>받는 분이 적어 주세요</small></span></li>
+            </ol>
+          </div>
+          <button type="button" class="back" id="demoBack">처음으로</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="view plate" data-view>
+    <div class="wrap">
+      <div class="pl-row" data-plates="bx-7-5,bx-7-6,be-257989869-6" data-labels="정하는 순간|만드는 손|건네는 순간"></div>
+      <div class="pl-say"><p>이름을 정하고, 손으로 만들고, 직접 건넵니다.</p></div>
+    </div>
+  </div>
+  <div class="view plate" data-view>
+    <div class="wrap">
+      <div class="pl-row" data-plates="bp-165970753-1,bp-31351515-1,bp-247245675-9" data-labels="택|봉투와 속지|쇼핑백"></div>
+      <div class="pl-say"><p>봉투, 속지, 택 한 장까지 신경 씁니다.</p></div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">마플 첫 화면과 나란히 보면.</h3>
+      <div class="cmp2">
+        <div><b>마플</b><p>카테고리 15개, 배너 4장, 가격이 붙은 상품이 가득합니다. 싸고 많다고 말하는 화면입니다.</p></div>
+        <div class="us"><b>꾸밈</b><p>괄호 하나, 품목 셋, 버튼 하나입니다. 누구를 위한 것인지부터 묻는 화면입니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 09 왜 우리인가 ═══ -->
+<section class="ch bg-paper" id="c9" data-n="09" data-t="왜 우리인가">
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="rec"><span class="mk" data-mark></span><span>No. 09 왜 우리인가</span></div>
+      <h2 class="h1">공장, 장인과<br>직접 일합니다.</h2>
+      <p class="lead">자수, 금속, 봉제, 가죽. 만드는 곳과 중간 단계 없이 거래합니다. 인쇄 판촉물과 눈으로 구별되는 물건이 여기서 나옵니다. 마플에서 자수는 따로 요청해 가능한지 답을 받아야 하는 작업입니다. 꾸밈은 자수가 기본입니다.</p>
+    </div>
+  </div>
+  <div class="view plate" data-view>
+    <div class="wrap">
+      <div class="pl-row four" data-plates="bp-257353475-6,bx-4-5,bx-5-2,bp-258082169-14" data-labels="자수 · 수놓다|금속 · 새기다|봉제 · 달다|가죽 · 찍다"></div>
+      <div class="pl-say"><p>의류와 인형 옷은 수놓고, 키링은 새기고, 인형은 꿰매고, 가죽에는 이니셜을 찍습니다.</p></div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="stock" style="margin-top:0">
+        <div>
+          <h3 class="h2">재고에 묶이는 돈이 적습니다.</h3>
+          <p class="p" style="margin-top:14px">쌓아 두는 것은 이름을 새기기 전의 빈 옷과 빈 키링뿐입니다. 주력 두 품목으로 시작하면 시작 자금 가운데 <b>6~9%</b>만 재고에 들어갑니다. 나머지는 사람, 사이트, 브랜드, 광고에 씁니다.</p>
+        </div>
+        <div>
+          <div class="stock-bar" aria-hidden="true"><i class="r" style="width:9%"></i><span></span></div>
+          <div class="stock-l"><span>빈 옷과 빈 키링 400만~750만 원</span><span>시작 자금 4,380만~1억 2,250만 원</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 10 사업성 ═══ -->
+<section class="ch bg-ink" id="c10" data-n="10" data-t="사업성">
+  <div class="view top" data-view>
+    <div class="wrap">
+      <div class="rec"><span class="mk" data-mark></span><span>No. 10 사업성</span></div>
+      <h2 class="h1">한 건 팔면<br>절반 가까이 남습니다.</h2>
+      <p class="lead">꾸밈이 돈을 버는지는 두 가지에 달렸습니다. 자랑이 주문을 얼마나 데려오는지, 광고비가 얼마나 드는지. 둘 다 첫 판매에서 바로 잴 수 있습니다.</p>
+      <div class="unit">
+        <h3 class="h3">자수 의류 한 장을 79,000원에 팔면</h3>
+        <div class="unit-bar" style="margin-top:14px" role="img" aria-label="71,818원 가운데 원가 36,582원, 남는 돈 35,236원">
+          <i style="width:25.06%"></i><i style="width:11.14%"></i><i style="width:4.87%"></i><i style="width:4.18%"></i><i style="width:3.63%"></i><i style="width:2.05%"></i><i class="keep"></i>
+        </div>
+        <div class="unit-l">
+          <span><b>18,000</b>빈 옷</span><span><b>8,000</b>자수</span><span><b>3,500</b>포장</span><span><b>3,000</b>배송</span><span><b>2,607</b>결제 수수료</span><span><b>1,475</b>불량·재작업</span><span class="keep"><b>35,236원 · 49.1%</b>남는 돈</span>
+        </div>
+        <p class="note">부가세를 뺀 71,818원 기준입니다. 광고비, 인건비, 사이트 비용은 따로입니다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">네 품목을 나란히 보면.</h3>
+      <table class="tbl">
+        <thead><tr><th>품목</th><th>판매가</th><th>한 건에 남는 돈</th><th>남는 비율</th><th>광고비 1.5만 원을 빼면</th></tr></thead>
+        <tbody>
+          <tr><td>자수 의류<small>매출을 끌고 갈 품목</small></td><td>79,000</td><td>35,236</td><td>49.1%</td><td>+20,236</td></tr>
+          <tr><td>가죽 소품<small>다음 단계</small></td><td>69,000</td><td>28,330</td><td>45.2%</td><td>+13,330</td></tr>
+          <tr><td>인형 키링<small>다음 단계</small></td><td>39,000</td><td>16,468</td><td>46.4%</td><td>+1,468</td></tr>
+          <tr><td>각인 키링<small>옷과 함께 파는 품목</small></td><td>29,000</td><td>14,167</td><td>53.7%</td><td class="neg">−833</td></tr>
+        </tbody>
+      </table>
+      <p class="note">단위는 원입니다. 자수 의류는 원가가 50% 더 나와도 한 건에 2.1만 원이 남습니다. 키링은 남는 비율이 가장 높습니다. 한 건에 남는 돈이 1.4만 원이라 옷에 얹어 팔거나 단체 주문으로 팝니다. 판매가를 59,000원으로 내리면 남는 비율이 49%에서 33%로 내려갑니다. 그래서 값을 지키는 것이 중요합니다.</p>
+    </div>
+  </div>
+  <div class="view top" data-view id="calcView">
+    <div class="wrap">
+      <h3 class="h2">직접 움직여 보세요.</h3>
+      <p class="lead">경우와 연차를 고르면 숫자가 채워집니다. 막대를 밀면 바로 다시 계산됩니다.</p>
+      <div class="calc" id="calc">
+        <div>
+          <div class="segs"><div><p class="seg-l">경우</p>
+          <div class="seg" id="segStage" role="group" aria-label="경우"><button type="button" data-st="cons">보수</button><button type="button" data-st="base" class="on">기준</button><button type="button" data-st="aggr">공격</button></div></div><div><p class="seg-l">연차</p><div class="seg" id="segYear" role="group" aria-label="연차"><button type="button" data-y="0">1년차</button><button type="button" data-y="1">2년차</button><button type="button" data-y="2" class="on">3년차</button></div></div></div>
+          <div class="sl"><label for="rPrice"><span>평균 주문 금액</span><output id="oPrice"></output></label><input class="rng" id="rPrice" type="range" min="30000" max="120000" step="1000" value="60000"><p>부가세 포함입니다.</p></div>
+          <div class="sl"><label for="rOrders"><span>한 달 개인 주문 수</span><output id="oOrders"></output></label><input class="rng" id="rOrders" type="range" min="0" max="22" step="1" value="15"><p id="oTraffic"></p></div>
+          <div class="sl"><label for="rK"><span>주문 1건이 데려오는 새 주문(입소문)</span><output id="oK"></output></label><input class="rng" id="rK" type="range" min="0" max="0.9" step="0.05" value="0.3"><p>자랑을 보고 들어온 주문입니다. 이만큼은 광고비 없이 따라옵니다.</p></div>
+          <div class="sl"><label for="rAd"><span>주문 1건을 받는 데 드는 광고비</span><output id="oAd"></output></label><input class="rng" id="rAd" type="range" min="5000" max="40000" step="1000" value="15000"><p>실제 값은 첫 광고에서 바로 나옵니다.</p></div>
+        </div>
+        <div class="out" aria-live="polite">
+          <div class="out-main">
+            <div><span>한 해 매출(부가세 제외)</span><b id="xRev"></b></div>
+            <div><span>광고비</span><b id="xAd"></b></div>
+            <div><span>남는 돈</span><b id="xOp"></b></div>
+          </div>
+          <p class="verdict" id="xVerdict"></p>
+          <div class="wfall" id="wfall">
+            <div><span>매출</span><u><i id="bRev"></i></u><em id="tRev"></em></div>
+            <div><span>원가를 빼고 남는 돈</span><u><i id="bCm"></i></u><em id="tCm"></em></div>
+            <div class="cost"><span>− 광고비</span><u><i id="bAd"></i></u><em id="tAd"></em></div>
+            <div class="cost"><span>− 고정비</span><u><i id="bFix"></i></u><em id="tFix"></em></div>
+            <div id="rowOp"><span>= 남는 돈</span><u><i id="bOp"></i></u><em id="tOp"></em></div>
+          </div>
+          <dl class="out-sub">
+            <div><dt>개인 주문 1건당 광고비를 빼고 남는 돈</dt><dd id="xPer"></dd></div>
+            <div><dt>매출에서 광고비가 차지하는 비율</dt><dd id="xAdPct"></dd></div>
+            <div><dt>광고로 받아야 하는 주문</dt><dd id="xBuy"></dd></div>
+          </dl>
+          <p class="fixed" id="xFixed"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">3년을 세 가지 경우로 봤습니다.</h3>
+      <table class="tbl" id="scTbl" aria-label="경우별 3년 매출과 남는 돈">
+        <thead><tr><th>경우</th><th>1년차 매출과 남는 돈</th><th>2년차</th><th>3년차</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <p class="note">단위는 억 원입니다. 보수는 주문 4.5만 원 · 입소문 0.1, 기준은 주문 6만 원 · 입소문 0.3, 공격은 주문 7.5만 원 · 입소문 0.5입니다. 광고비는 셋 다 주문 1건에 1.5만 원으로 봤습니다. 숫자를 누르면 계산기에 그 값이 들어갑니다.</p>
+      <p class="so" style="font-size:clamp(22px,2.7vw,40px)">기준대로 가면 2년차에 흑자가 납니다. 3년차에는 매출 18.6억 원에 1.24억 원이 남습니다. 그래서 꾸밈은 자랑을 가장 먼저 챙깁니다.</p>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="cols2" style="margin-top:0">
+        <div>
+          <h3 class="h3">처음에 필요한 돈</h3>
+          <p class="bigrange" style="margin-top:12px"><span>5,700만<small>원</small> ~</span> <span>1억 6,400만<small>원</small></span></p>
+          <p class="note" style="margin-top:8px">예비비 10~15%를 넣은 값입니다. 주력 두 품목만으로 시작하면 4,380만~1억 2,250만 원입니다. 빗금 줄이 재고입니다.</p>
+          <div class="fund" id="fund"></div>
+        </div>
+        <div>
+          <h3 class="h3">꾸밈이 보여 드릴 숫자 둘</h3>
+          <p class="p" style="margin-top:12px;font-size:16.5px">하나는 <b>한 건에 남는 돈</b>입니다. 또 하나는 <b>자랑 1건이 데려오는 주문 수</b>입니다. 이 두 숫자가 서면 단체 주문과 공식 협업이 그 위에 올라갑니다. 두 숫자 모두 첫 판매에서 바로 나옵니다.</p>
+        </div>
+      </div>
+      <p class="fine">예상치이며 실제 원가에 따라 달라집니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 11 가는 길 ═══ -->
+<section class="ch" id="c11" data-n="11" data-t="가는 길">
+  <div class="view top" data-view>
+    <div class="wrap">
+      <div class="rec"><span class="mk" data-mark></span><span>No. 11 가는 길</span></div>
+      <h2 class="h1">작게 시작해서<br>차례로 넓힙니다.</h2>
+      <ol class="road">
+        <li class="now"><span class="kb"><b>0</b></span><i>지금</i><h3>이름과 견본</h3><p>이름과 괄호 표시를 정하고 견본을 만듭니다. 견본으로 세 가지 가격을 걸어 봅니다.</p></li>
+        <li><span class="kb"><b>1</b></span><h3>두 품목으로 시작</h3><p>자수 의류와 각인 키링을 팝니다. 주문에서 배송까지 매끄럽게 도는지, 자랑이 실제로 올라오는지 봅니다.</p></li>
+        <li><span class="kb"><b>2</b></span><h3>팬덤과 단체 주문</h3><p>팬끼리 맞춰 드는 물건을 함께 주문받습니다. 자랑이 다음 주문을 데려오는지 숫자로 확인합니다.</p></li>
+        <li><span class="kb"><b>3</b></span><h3>공식 협업</h3><p>기획사, 크리에이터, 배우와 수익을 나눕니다. 인형처럼 여러 개를 만들어야 하는 품목을 이때 엽니다.</p></li>
+        <li><span class="kb"><b>4</b></span><h3>넓히기</h3><p>가죽 같은 새 품목과 해외로 나갑니다.</p></li>
+      </ol>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">가장 먼저 견본으로<br>세 가지 가격을 걸어 봅니다.</h3>
+      <div class="first">
+        <div class="prices"><span>59,000</span><span>79,000</span><span>109,000</span></div>
+        <div><p>어느 값에 가장 잘 팔리는지 봅니다. 같은 때에 자랑이 얼마나 올라오는지, 광고비가 얼마나 드는지도 같이 잽니다.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">지금 필요한 것.</h3>
+      <div class="need">
+        <div><span class="kb"><b>견본</b></span><p>주력 두 품목. 300만~800만 원.</p></div>
+        <div><span class="kb"><b>상표</b></span><p>‘꾸밈’과 ‘kku-mim’ 출원, 괄호 표시 확인. 180만~300만 원.</p></div>
+        <div><span class="kb"><b>사이트</b></span><p>괄호 하나짜리 첫 화면과 새김 미리보기. 300만~2,000만 원.</p></div>
+        <div><span class="kb"><span class="caret" style="--u:clamp(44px,5.4vw,74px)"></span></span><p><b style="color:var(--fg);font-weight:600">함께할 사람.</b> 이 자리는 비워 두었습니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 12 미리 정해 둔 것 ═══ -->
+<section class="ch bg-paper" id="c12" data-n="12" data-t="미리 정해 둔 것">
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="rec"><span class="mk" data-mark></span><span>No. 12 미리 정해 둔 것</span></div>
+      <h2 class="h2">오래 가려고 미리 정했습니다.</h2>
+      <div class="solve">
+        <div><i>권리</i><h3>연예인 얼굴과 공식 로고는 새기지 않습니다.</h3><p>이름, 날짜, 색, 팬만 아는 상징으로 만듭니다. 크게 키울 때는 수익을 나누는 공식 협업으로 갑니다. 떳떳하게 만든 고급 굿즈를 찾는 사람이 늘어납니다. 판매 전에 변호사 검토를 받습니다.</p></div>
+        <div><i>자랑</i><h3>두 길을 함께 갑니다.</h3><p>스타가 걸치는 길과 팬끼리 맞춰 드는 길입니다. 한쪽이 막혀도 다른 쪽이 돕니다.</p></div>
+        <div><i>값</i><h3>값은 견본으로 정합니다.</h3><p>견본을 만들어 공장과 장인의 실제 견적을 받습니다. 가격은 세 가지를 걸어 보고 정합니다.</p></div>
+        <div><i>괄호 표시</i><h3>괄호 표시를 지킵니다.</h3><p>변리사와 함께 괄호 표시를 지킬 방법을 찾습니다. ‘꾸밈’과 ‘kku-mim’ 상표도 같이 출원합니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 13 부록 ═══ -->
+<section class="ch" id="c13" data-n="13" data-t="부록">
+  <div class="view top" data-view>
+    <div class="wrap">
+      <div class="rec"><span class="mk" data-mark></span><span>No. 13 부록</span></div>
+      <h2 class="h1">참고 사진 모음</h2>
+      <p class="lead"><span data-bx-groups>13</span>묶음 <span data-bx-total>150</span>장입니다. 한 묶음씩 넘겨 보세요. 흑백에 색 하나, 굵고 단정한 것만 골랐습니다.</p>
+      <div class="bx-tabs" id="bxTabs" role="tablist" aria-label="묶음"></div>
+      <div class="strip-h" style="margin-top:18px">
+        <h3 class="h3" id="bxTitle"></h3>
+        <div class="strip-nav" data-for="sBx"><button type="button" aria-label="앞으로">←</button><button type="button" aria-label="뒤로">→</button></div>
+      </div>
+    </div>
+    <div class="strip" id="sBx" tabindex="0" aria-label="참고 사진"></div>
+  </div>
+</section>
+
+<!-- ═══ 끝 ═══ -->
+<section class="ch bg-ink end" id="cend" data-n="끝" data-t="끝">
+  <div class="view" data-view>
+    <div class="wrap">
+      <div class="lock"><span class="kk" data-logo></span><span class="my">My</span><span class="kb"><span class="rotbox"><span class="rot" data-rot></span></span></span></div>
+      <p data-slogan></p>
+      <div class="foot"><span>꾸밈 kku-mim · 2026. 11</span></div>
+    </div>
+  </div>
+</section>
+
+
+
+</main>
+<script src="logo.js"></script>
+<script src="refs.js"></script>
+<script src="plan.js"></script>
+</body>
+</html>
