@@ -1277,3 +1277,11 @@ html.is-print .nri em{font:600 11px/1 var(--body);font-style:normal;color:var(--
 .fv p u+u{color:var(--sub)}
 .fv p u.neg{opacity:.75}
 #fiveSay{margin-top:72px}
+
+/* 이름 후보 6개: 3칸 × 2줄 */
+.names.n6{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(14px,2vw,30px)}
+.names.n6 .nc dd{font-size:clamp(13px,1.02vw,14.5px);line-height:1.5}
+.names.n6 .nc dl>div{padding:8px 0}
+@media (max-width:760px){.names.n6{grid-template-columns:minmax(0,1fr)}}
+.names.n6 .nc:nth-child(3n+1){padding-left:0;border-left:0}
+.names.n6 .nc:nth-child(n+4){margin-top:clamp(14px,2.5vh,26px)}
