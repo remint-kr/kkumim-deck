@@ -70,6 +70,8 @@ var KKU_NAME_MS = 2600;  /* 장 머리·끝 화면의 앞 괄호에서 이름 �
 /* 표지: 앞 괄호에서 '가칭 → 후보들'이 로고 시안 다섯(logo.js)과 엇갈려 돌아갑니다. 인쇄에서는 여섯 개가 한 줄로 놓입니다. */
 var KKU_TEMP_NAME = '꾸밈';   /* 가칭. 표지에서만 후보들 앞에 넣습니다 */
 var KKU_COVER_MS = 1350;      /* 표지에서 이름이 바뀌는 빠르기(밀리초). 뒤 괄호 낱말보다 느리게 */
+var KKU_COVER_FIXED = true;    /* true면 표지(00)는 가칭 하나로 고정하고 후보를 돌리지 않습니다 */
+var KKU_COVER_NOTE = '가칭 (상표권 여부 등 확인 중)';   /* 표지 이름 아래 작은 줄 */
 /* 표지에서만: 괄호 안 낱말을 직접 고르거나 적었을 때 아랫줄을 이 문장으로 바꿉니다. 없으면 위 슬로건. */
 var KKU_SLOGAN_BY_WORD = {
   'Star': '최애 이름을 새겨 드립니다.', '최애': '최애 이름을 새겨 드립니다.',
@@ -140,6 +142,8 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
   var DRAFTS = window.KKU_LOGO_DRAFTS || [];
   var STY = [{ c: 'lg-1', n: '먹' }, { c: 'lg-2', n: '열림' }, { c: 'lg-3', n: '겹' }, { c: 'lg-4', n: '길게' }, { c: 'lg-5', n: '가위집' }];
   var CN = (KKU_TEMP_NAME ? [{ name: KKU_TEMP_NAME, tbd: 1 }] : []).concat(NAMES.filter(function (n) { return n.name !== KKU_TEMP_NAME; }));
+  var CFIX = typeof KKU_COVER_FIXED !== 'undefined' && KKU_COVER_FIXED && KKU_TEMP_NAME;
+  if (CFIX) { CN = CN.slice(0, 1); STY = STY.slice(0, 1); document.documentElement.classList.add('cover-fixed'); var cn = document.getElementById('coverNote'); if (cn) cn.textContent = KKU_COVER_NOTE || ''; }
   function markHTML(name, k) {
     var d = DRAFTS[k];
     if (name === KKU_TEMP_NAME && d && d.d) return '<svg viewBox="' + d.viewBox + '" role="img" aria-label="' + name + '"><path fill-rule="evenodd" d="' + d.d + '"/></svg>';
@@ -154,7 +158,7 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
     if (!cvName) return;
     var n = CN[ci], s = STY[si];
     cvName.className = 'nrot cv ' + s.c; cvName.innerHTML = markHTML(n.name, si);
-    cvBox.className = 'kb nb cvb ' + s.c;
+    cvBox.className = (CFIX ? 'nb cvb fixed ' : 'kb nb cvb ') + s.c;
     cvCap.textContent = (n.tbd ? '가칭' : '이름 후보') + ' · 로고 ' + s.n;
   }
   /* 앞 괄호 너비는 여섯 이름 × 다섯 시안 가운데 가장 넓은 것에 맞춘다. 그래야 'My [ ]'가 움직이지 않는다 */

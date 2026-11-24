@@ -1285,3 +1285,10 @@ html.is-print .nri em{font:600 11px/1 var(--body);font-style:normal;color:var(--
 @media (max-width:760px){.names.n6{grid-template-columns:minmax(0,1fr)}}
 .names.n6 .nc:nth-child(3n+1){padding-left:0;border-left:0}
 .names.n6 .nc:nth-child(n+4){margin-top:clamp(14px,2.5vh,26px)}
+
+/* 표지 이름 고정(가칭) */
+.cover-note{display:none}
+html.cover-fixed .cover-note{display:block;margin-top:clamp(10px,1.6vh,16px);font:500 clamp(12px,1vw,14px)/1.4 var(--body);color:var(--mid);letter-spacing:0}
+html.cover-fixed .ncap,html.cover-fixed .nrow{display:none!important}
+html.cover-fixed .cvb,html.cover-fixed .cvb .nrot,html.cover-fixed .cvb svg{color:inherit;fill:currentColor;opacity:1}
+html.is-print.cover-fixed .cvb .nrot{visibility:visible}
