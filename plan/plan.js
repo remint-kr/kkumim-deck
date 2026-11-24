@@ -22,9 +22,8 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
    남의 사진은 전부 refs.js 에 있고 여기서는 불러다 그리기만 합니다. 로고는 logo.js 한 곳.
 
    주소 뒤에 붙이는 값
-     ?mode=external  남의 사진을 회색 칸 '교체 예정'으로 바꾸고, '대표님이 채울 것' 화면을 뺍니다
+     ?mode=external  남의 사진을 회색 칸 '교체 예정'으로 바꾸고
      ?print=1        16:9 한 쪽씩 떨어지는 인쇄 배치로 엽니다 (헤드리스 크롬 --print-to-pdf 용)
-     ?todo=1         인쇄에 '대표님이 채울 것' 화면을 넣습니다
 
    숫자의 근거는 research/ 폴더에만 둡니다(화면에는 출처를 싣지 않습니다). */
 (function () {
@@ -468,7 +467,7 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
     el.innerHTML = F.map(function (f) { return '<div class="' + (f[3] ? 'inv' : '') + '"><span>' + f[0] + '</span><u><i style="left:' + (f[1] / 30) + '%;width:' + ((f[2] - f[1]) / 30) + '%"></i></u><em>' + won(f[1]) + '~' + won(f[2]) + '만</em></div>'; }).join('');
   })();
 
-  /* 대표님이 채울 것 — 누르면 표시, 이 컴퓨터에 기억 */
+  
   (function () {
     var el = $('#todoList'); if (!el) return;
     var KEY = 'kku-todo-v2', done = {};
