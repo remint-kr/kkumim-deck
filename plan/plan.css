@@ -1311,3 +1311,5 @@ html.is-print.cover-fixed .cvb .nrot{visibility:visible}
 html.is-print .stage-big{display:none!important}
 .stage.has-video:not(.playing)::after{content:"";position:absolute;inset:0;background:rgba(17,17,15,.55);z-index:2;pointer-events:none}
 .stage-ui{z-index:3}
+.thumb[data-ref="prec-margiela"]{background:#F4F3F0}
+.thumb[data-ref="prec-margiela"] img{object-fit:contain!important;object-position:center!important}
