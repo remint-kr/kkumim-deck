@@ -769,7 +769,7 @@ html.is-print #items{margin:0;padding:0;border:0}
 }
 
 
-/* ═══════════════════════ 2판 (대표님 피드백 11-23 저녁) ═══════════════════════
+/* ═══════════════════════ 2판 ═══════════════════════
    글꼴은 Pretendard. 여러 글꼴은 괄호 안에서 돌아가는 낱말(.rot)에만.
    '꾸밈'과 'My [ ]'는 같은 크기·같은 무게의 한 묶음(.lock). 직접 그린 품목 그림·도해는 뺐다. */
 body{font-feature-settings:"tnum" 0}
@@ -967,7 +967,7 @@ body{font-feature-settings:"tnum" 0}
 .map .us .lock{--u:clamp(22px,2.9vw,40px);--rw:3}
 .lock.big6{--u:clamp(36px,8.4vw,112px)}
 
-/* ── 대표님이 채울 것 ── */
+
 .todo{--bg:#FFF;background:#FFF}
 html.is-external .todo{display:none}
 .todo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,3vw,44px) clamp(24px,5vw,80px);margin-top:clamp(24px,4vh,44px)}
