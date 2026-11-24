@@ -1,18 +1,70 @@
-/* 꾸밈 My [ ] 소개서 (2판) — 동작
+/* 꾸밈 My [ ] 소개서 (3판) — 동작
 
    ── 여기만 바꾸면 됩니다 ─────────────────────────────────────────── */
 /* 슬로건. 이 한 줄을 바꾸면 표지·끝 화면·장 머리가 전부 바뀝니다. */
 var KKU_SLOGAN = '소중한 건, 이름을 새긴다.';
-/* 처음에 필요한 돈 (만 원). 금액을 고치거나 줄을 더하고 빼면 합계·재고 비율·막대·계산기 고정비가 저절로 맞춰집니다.
-   [항목, 금액, 재고면 1]. 인건비 줄은 아래 두 값으로 계산됩니다. */
+/* 처음에 필요한 돈 (만 원). 금액을 고치거나 줄을 더하고 빼면 합계·재고 비율·막대·계산기 1년차 고정비가 저절로 맞춰집니다.
+   [항목, 금액, 표시]. 표시 1 = 재고(빗금 줄), 2 = 고정비가 아닌 것(광고 매체비, 포장재처럼 팔릴 때 원가로 녹는 돈). 인건비 줄은 아래 두 값으로 계산됩니다.
+   계산기의 1년차 고정비 = 인건비 + 표시가 없는 줄(1~6개월) + 아래 KKU_BUDGET2 에서 넷째 칸이 없는 줄(7~12개월). 지금 값으로 6억 4,100만 원입니다. */
 var KKU_MONTHS = 6;            // 처음 버티는 기간(개월)
 var KKU_PAY_MONTH = 1500;      // 인건비, 한 달(만 원)
-var KKU_FIX_ETC_YEAR = 3000;   // 인건비 말고 해마다 드는 고정비(작업 공간 월 200만 × 12 + 사이트 운영 600만, 만 원) — 계산기 1년차 고정비에 쓰임
 var KKU_BUDGET = [
-  ['광고와 시험 판매', 5500], ['사이트(주문·새김 미리보기)', 3000], ['브랜드 디자인', 2000],
+  ['광고와 시험 판매', 5500, 2], ['사이트(주문·새김 미리보기)', 3000], ['브랜드 디자인', 2000],
   ['촬영(제품·착용·영상)', 1500], ['빈 옷과 빈 키링', 1500, 1], ['견본', 1200], ['빈 인형과 가죽', 1200, 1],
-  ['작업 공간', 1200], ['상표(국내·해외)', 1000], ['포장재', 700], ['법률 검토', 500], ['예비비', 1700]
+  ['작업 공간', 1200], ['상표(국내·해외)', 1000], ['포장재', 700, 2], ['법률 검토', 500], ['예비비', 1700]
 ];
+/* 이어서 더 넣는 돈: 7~12개월 (만 원). [항목, 금액, 묶음, 고정비 아님]. 재무팀 수정안(11-24).
+   줄을 고치거나 더하고 빼면 막대·합계·비율·1년 합계·문장·계산기 1년차 고정비가 저절로 맞춰집니다.
+   묶음(셋째 칸)이 같은 줄끼리 합쳐서 '사람 34% · 광고 37%' 같은 묶음 막대를 그립니다. 묶음을 비우면 '그 밖'으로 들어갑니다.
+   넷째 칸 1 = 고정비가 아닌 것(광고 매체비, 협업 선급). 계산기는 광고비를 따로 세므로 고정비에서 뺍니다. */
+var KKU_BUDGET2 = [
+  ['인건비·채용(4명 → 12명)', 24000, '사람'],
+  ['성과 광고', 22500, '광고', 1], ['광고 증액 대기분', 2000, '광고', 1], ['광고 소재 제작', 1500, '광고'],
+  ['인플루언서·공식 협찬', 5000], ['팝업 2회', 6500], ['공식 협업 선급', 2500, '', 1], ['새 품목 개발(신발)', 2500],
+  ['사이트 고도화', 1500], ['사무·작업 공간', 2000]
+];
+/* 7~12개월을 한 줄로 말하는 문장. 1년 예산 화면에 들어갑니다. 비우면 가장 큰 항목 셋으로 문장을 만듭니다. */
+var KKU_BUDGET2_SAY = '7개월차부터 사람을 12명으로 늘리고, 광고를 크게 키웁니다.';
+/* 5년 그림. 숫자가 오면 한 해에 한 줄씩 채웁니다(억 원). 비어 있으면 그 화면은 나오지 않습니다.
+   [연차, 재투자 매출, 재투자 남는 돈, 재투자 없음 매출, 재투자 없음 남는 돈]
+   뒤의 두 칸(재투자 없음)을 비우면 재투자 한 줄만 그립니다.
+   예) var KKU_5Y = [[1, 20.0, -0.8, 20.0, -0.8], [2, 54.8, 2.9, 50.0, 3.5], …]; */
+var KKU_5Y = [[1, 20.0, -0.77, 20.0, -0.77], [2, 54.8, 0.01, 54.8, 2.09], [3, 103.9, 3.82, 94.2, 3.64], [4, 157.2, 12.27, 118.5, 6.11], [5, 204.3, 18.32, 142.9, 8.58]];
+var KKU_5Y_SAY = '2년차에 번 돈을 다시 광고와 사람에 넣으면, 5년차 매출이 143억 원에서 204억 원으로 커집니다. 5년 동안 남는 돈도 19.7억 원에서 33.7억 원이 됩니다.';   /* 5년 그림 아래 한 줄 */
+/* 이름 후보(11-24). '꾸밈'은 가칭이라 본문에만 남고 이 목록에는 없습니다.
+   표지·장 머리·끝 화면의 앞 괄호에서 이 이름들이 이 순서로 돌아가고, 06장 '이름 후보' 화면이 이 목록으로 그려집니다(3~5개).
+   { name: 이름, en: 로마자, meaning: 뜻, image: 주는 느낌, pros: [장점…], cons: [단점…] }  순서에 순위의 뜻은 없습니다. */
+var KKU_NAMES = [
+  { name: '메움', en: 'MEUM',
+    meaning: '빈칸을 메운다. 꾸밈은 빈칸이고, 고객이 그 칸을 메운다. 라틴어 meum은 ‘나의 것’이라 뒤의 My와 맞물린다.',
+    image: '비어 있는 틀, 그것을 채우는 손. 양 끝의 ㅁ을 열면 그대로 [ ] 괄호가 된다(MEUM도 양 끝이 M).',
+    pros: ['틀이라는 뜻이 이름에 그대로 있음', '로고가 이름에서 바로 나옴', '같은 이름 상표 없음(1차), meum.kr 비어 있음'],
+    cons: ['‘구멍을 메운다’처럼 실용적인 말로도 들림', '영어권에서 읽는 법이 갈릴 수 있음'] },
+  { name: '한밈', en: 'HANMIM',
+    meaning: '한(하나, 韓) + 밈. 꾸밈의 ‘밈’을 물려받았다. 밈은 따라 하며 퍼지는 것이라, 선물이 자랑되고 퍼지는 구조와 같다.',
+    image: '하나뿐인 것이 퍼져 나가는 모습. 밈(ㅁㅣㅁ)은 글자 자체가 [ | ]처럼 생겼다.',
+    pros: ['꾸밈의 소리와 뜻을 이어받음', '퍼짐이라는 사업 구조가 이름에 들어 있음', '같은 이름 상표 없음(1차), hanmim.kr 비어 있음'],
+    cons: ['‘밈’이 인터넷 유머처럼 가볍게 들릴 수 있어 서체와 톤으로 무게를 잡아야 함'] },
+  { name: '지님', en: 'JINIM',
+    meaning: '늘 지니고 다닌다. 키링, 옷, 가방처럼 몸에 지니는 물건과 바로 이어진다.',
+    image: '늘 곁에 두는 작은 물건, 오래 함께한 시간.',
+    pros: ['품목과 가장 가까운 뜻', '부드럽고 따뜻함', '꾸밈처럼 ‘-ㅁ’으로 끝남'],
+    cons: ['같은 이름의 취향 기록 서비스가 운영 중이고 도메인이 이미 쓰임'] },
+  { name: '한칸', en: 'HANKAN',
+    meaning: '단 한 칸, 그 칸은 고객의 것. ‘한’은 하나이면서 한국이다.',
+    image: '이름이 곧 틀. 하나의 칸, 하나의 괄호.',
+    pros: ['틀이라는 생각이 가장 또렷함', '같은 받침이 반복돼 소리가 좋음'],
+    cons: ['판매업(35류)에 ‘한칸샵’이 먼저 있음', '도메인이 이미 쓰임', '일본어로 ‘반감’과 소리가 같음'] },
+  { name: '새밈', en: 'SAEMIM',
+    meaning: '새김 + 꾸밈. 이름을 새겨 꾸민다.',
+    image: '새겨진 글자, 손으로 남긴 흔적.',
+    pros: ['상표·도메인이 가장 깨끗함(.com까지 비어 있음)', '새김이라는 행위가 이름에 들어 있음'],
+    cons: ['‘새 밈’으로 읽힐 수 있음', '영어권에서 ‘ae’를 읽기 어려움'] }
+];
+var KKU_NAME_MS = 2600;  /* 장 머리·끝 화면의 앞 괄호에서 이름 후보가 바뀌는 빠르기(밀리초) */
+/* 표지: 앞 괄호에서 '가칭 → 후보들'이 로고 시안 다섯(logo.js)과 엇갈려 돌아갑니다. 인쇄에서는 여섯 개가 한 줄로 놓입니다. */
+var KKU_TEMP_NAME = '꾸밈';   /* 가칭. 표지에서만 후보들 앞에 넣습니다 */
+var KKU_COVER_MS = 1350;      /* 표지에서 이름이 바뀌는 빠르기(밀리초). 뒤 괄호 낱말보다 느리게 */
 /* 표지에서만: 괄호 안 낱말을 직접 고르거나 적었을 때 아랫줄을 이 문장으로 바꿉니다. 없으면 위 슬로건. */
 var KKU_SLOGAN_BY_WORD = {
   'Star': '최애 이름을 새겨 드립니다.', '최애': '최애 이름을 새겨 드립니다.',
@@ -51,11 +103,83 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
   /* ═════════ 0. 로고·표식·슬로건 (한 곳에서 불러 씁니다) ═════════ */
   var LOGO = window.KKU_LOGO || { text: '꾸밈' };
   var logoHTML = LOGO.body ? '<svg viewBox="' + LOGO.viewBox + '" role="img" aria-label="' + LOGO.text + '">' + LOGO.body + '</svg>' : LOGO.text;
+  /* 이름은 가칭: 큰 표기와 장 머리는 '[이름 후보] My [ ]', 옆 목차와 쪽 머리(data-mark="plain")는 'My [ ]'만 */
+  var NAMES = (KKU_NAMES || []).filter(function (n) { return n && n.name; });
+  if (!NAMES.length) NAMES = [{ name: LOGO.text || '' }];
   $$('[data-mark]').forEach(function (el) {
-    el.innerHTML = '<span class="lock mini"><span class="kk" data-logo></span><span class="my">My</span><span class="kb"><span class="slot"></span></span></span>' +
-      (el.getAttribute('data-mark') === 'plain' ? '' : '<em>' + KKU_SLOGAN + '</em>');
+    var plain = el.getAttribute('data-mark') === 'plain';
+    el.innerHTML = '<span class="lock mini">' + (plain ? '' : '<span class="kk" data-logo></span>') + '<span class="my">My</span><span class="kb"><span class="slot"></span></span></span>' +
+      (plain ? '' : '<em>' + KKU_SLOGAN + '</em>');
   });
-  $$('[data-logo]').forEach(function (el) { el.innerHTML = logoHTML; if (LOGO.body) el.classList.add('is-svg'); });
+  $$('[data-logo]').forEach(function (el) { el.innerHTML = '<span class="kb nb"><span class="nbox"><span class="nrot" data-name></span></span></span>'; });
+  var nrots = $$('[data-name]'), ni = 0, ntimer = null;
+  var oneLogo = LOGO.body && NAMES.length === 1 && NAMES[0].name === LOGO.text;
+  /* 앞 괄호 너비 = 가장 긴 이름에 맞춘다(돌아가도 자리가 흔들리지 않게). 글꼴이 뜨면 실제 너비로 다시 잰다 */
+  function sizeNames() {
+    var t = document.createElement('span'); t.className = 'nrot'; t.style.cssText = 'position:absolute;visibility:hidden;font-size:96px';
+    document.body.appendChild(t);
+    var w = 0; NAMES.forEach(function (n) { t.textContent = n.name; w = Math.max(w, t.offsetWidth); });
+    t.remove();
+    root.style.setProperty('--nw', (w ? w / 100 + .04 : Math.max.apply(null, NAMES.map(function (n) { return wEm(n.name); }))).toFixed(2));
+  }
+  sizeNames();
+  function paintName() { nrots.forEach(function (el) { if (oneLogo) { el.innerHTML = logoHTML; el.classList.add('is-svg'); } else el.textContent = NAMES[ni].name; }); }
+  function tickName() {
+    nrots.forEach(function (el) { el.classList.add('out'); });
+    setTimeout(function () { ni = (ni + 1) % NAMES.length; paintName(); nrots.forEach(function (el) { el.classList.remove('out'); }); }, 240);
+  }
+  function runName() { clearInterval(ntimer); if (NAMES.length > 1 && !reduce) ntimer = setInterval(function () { if (!document.hidden) tickName(); }, KKU_NAME_MS); }
+  paintName(); runName();
+
+  /* 표지: 이름 후보 × 로고 시안. 이름은 여섯(가칭 + 후보), 시안은 다섯이라 돌 때마다 짝이 엇갈린다 */
+  var DRAFTS = window.KKU_LOGO_DRAFTS || [];
+  var STY = [{ c: 'lg-1', n: '먹' }, { c: 'lg-2', n: '열림' }, { c: 'lg-3', n: '겹' }, { c: 'lg-4', n: '길게' }, { c: 'lg-5', n: '가위집' }];
+  var CN = (KKU_TEMP_NAME ? [{ name: KKU_TEMP_NAME, tbd: 1 }] : []).concat(NAMES.filter(function (n) { return n.name !== KKU_TEMP_NAME; }));
+  function markHTML(name, k) {
+    var d = DRAFTS[k];
+    if (name === KKU_TEMP_NAME && d && d.d) return '<svg viewBox="' + d.viewBox + '" role="img" aria-label="' + name + '"><path fill-rule="evenodd" d="' + d.d + '"/></svg>';
+    return Array.from(name).map(function (ch) { return '<span>' + ch + '</span>'; }).join('');
+  }
+  var cvHost = $('[data-cover]'), cvName = null, cvCap = null, cvBox = null, ci = 0, si = 0, ctimer = null;
+  if (cvHost) {
+    cvHost.innerHTML = '<span class="kb nb cvb"><span class="nbox"><span class="nrot cv"></span></span></span><i class="ncap"></i>';
+    cvName = $('.nrot', cvHost); cvCap = $('.ncap', cvHost); cvBox = $('.kb', cvHost);
+  }
+  function paintCover() {
+    if (!cvName) return;
+    var n = CN[ci], s = STY[si];
+    cvName.className = 'nrot cv ' + s.c; cvName.innerHTML = markHTML(n.name, si);
+    cvBox.className = 'kb nb cvb ' + s.c;
+    cvCap.textContent = (n.tbd ? '가칭' : '이름 후보') + ' · 로고 ' + s.n;
+  }
+  /* 앞 괄호 너비는 여섯 이름 × 다섯 시안 가운데 가장 넓은 것에 맞춘다. 그래야 'My [ ]'가 움직이지 않는다 */
+  function sizeCover() {
+    if (!cvHost) return;
+    var t = document.createElement('span');
+    t.style.cssText = 'position:absolute;left:0;top:0;visibility:hidden;font-size:96px;white-space:nowrap';
+    document.body.appendChild(t);
+    var w = 0;
+    CN.forEach(function (n) { STY.forEach(function (s, k) { t.className = 'nrot cv ' + s.c; t.innerHTML = markHTML(n.name, k); w = Math.max(w, t.getBoundingClientRect().width); }); });
+    document.body.removeChild(t);
+    if (w) cvHost.style.setProperty('--nw', (w / 100 + .06).toFixed(2));
+  }
+  function runCover() { clearInterval(ctimer); if (cvName && CN.length > 1 && !reduce) ctimer = setInterval(function () { if (document.hidden) return; ci = (ci + 1) % CN.length; si = (si + 1) % STY.length; paintCover(); }, KKU_COVER_MS); }
+  paintCover(); sizeCover(); runCover();
+  window.__cover = function (c, s) { clearInterval(ctimer); ci = c % CN.length; si = s % STY.length; paintCover(); };   /* 검수용: 원하는 짝을 세워 본다 */
+  /* 인쇄용: 여섯 이름을 작게 한 줄로. 시안도 하나씩 엇갈려 입힌다 */
+  $$('[data-nrow]').forEach(function (el) {
+    el.innerHTML = CN.map(function (n, k) { var s = STY[k % STY.length]; return '<span class="nri"><span class="nrot cv ' + s.c + '">' + markHTML(n.name, k % STY.length) + '</span>' + (n.tbd ? '<em>가칭</em>' : '') + '</span>'; }).join('');
+  });
+  /* 큰 표기가 자리를 넘으면 통째로 줄인다(이름이 길어져도 안 깨지게) */
+  function fitLocks() {
+    $$('.lock.hero, .end .lock, .stage-empty .lock, .map .us .lock, .demo-ask .lock, .made .lock, .nc .lock').forEach(function (el) {
+      el.style.removeProperty('--u');
+      var p = el.parentNode, cs = getComputedStyle(p), avail = p.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      var w = Math.max(el.offsetWidth, el.scrollWidth);
+      if (avail > 40 && w > avail + 1) el.style.setProperty('--u', (parseFloat(getComputedStyle(el).fontSize) / 1.04 * avail / w * .985).toFixed(2) + 'px');
+    });
+  }
+  window.__names = NAMES;
   $$('[data-slogan]').forEach(function (el) { el.textContent = KKU_SLOGAN; });
 
   /* ═════════ 1. 남의 자료(refs.js) 불러오기 ═════════ */
@@ -134,6 +258,20 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
     { w: 'Self', t: '나에게', p: '가장 가볍게 해 보는 첫 주문입니다.', a: '내 이니셜, 별명, 좌우명', b: '각인 키링, 가죽 소품', c: 'Nike By You.' }
   ];
   var TODOS = [];
+
+  /* 06장 끝: 이름 후보 — KKU_NAMES 에서 그린다 */
+  (function () {
+    var el = $('#names'); if (!el) return;
+    var L = NAMES.slice(0, 5);
+    function li(a) { return (a || []).map(function (t) { return '<li>' + t + '</li>'; }).join(''); }
+    el.style.setProperty('--n', L.length);
+    el.className = 'names n' + L.length;
+    el.innerHTML = L.map(function (n) {
+      return '<article class="nc"><div class="nc-h"><span class="lock"><span class="nfix">' + n.name + '</span><span class="my">My</span><span class="kb"><span class="slot"></span></span></span>' + (n.en ? '<i>' + n.en + '</i>' : '') + '</div><dl>' +
+        (n.meaning ? '<div><dt>뜻</dt><dd>' + n.meaning + '</dd></div>' : '') + (n.image ? '<div><dt>주는 느낌</dt><dd>' + n.image + '</dd></div>' : '') +
+        ((n.pros || []).length ? '<div><dt>장점</dt><dd><ul>' + li(n.pros) + '</ul></dd></div>' : '') + ((n.cons || []).length ? '<div><dt>단점</dt><dd><ul>' + li(n.cons) + '</ul></dd></div>' : '') + '</dl></article>';
+    }).join('');
+  })();
 
   /* 07장: 주력 넷 한눈에 + 품목마다 큰 사진 화면, 상품 화면 */
   (function () {
@@ -262,7 +400,7 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
     root.classList.toggle('has-word', !!typed);
     var cs = $('#coverSlogan'); if (cs) cs.textContent = (typed && KKU_SLOGAN_BY_WORD[typed]) || KKU_SLOGAN;
     var mw = $('#madeWord'); if (mw) { mw.textContent = typed || 'Star'; mw.style.setProperty('--fs', Math.min(1, 3 / Math.max(wEm(typed || 'Star'), .9)).toFixed(3)); }
-    paint(); run();
+    paint(); run(); fitLocks(); paint();
   }
   window.__word = apply;
   $$('input[data-win]').forEach(function (i) { i.addEventListener('input', function () { apply(i.value, i); }); });
@@ -270,7 +408,7 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
   /* 인쇄용: 낱말 여러 개를 세로로 */
   $$('[data-stack]').forEach(function (el) { el.innerHTML = KKU_WORDS.slice(0, 7).map(function (w) { return '<span class="' + w[1] + '" style="--sz:' + w[2] + '">' + w[0] + '</span>'; }).join(''); });
   apply('');
-  window.addEventListener('resize', paint);
+  window.addEventListener('resize', function () { fitLocks(); paint(); });
   if (document.fonts && document.fonts.load) {
     Promise.all(KKU_WORDS.map(function (w) { var t = document.createElement('span'); t.className = w[1]; t.style.cssText = 'position:absolute;visibility:hidden'; t.textContent = w[0]; document.body.appendChild(t); var f = getComputedStyle(t); var p = document.fonts.load(f.fontStyle + ' ' + f.fontWeight + ' 40px ' + f.fontFamily, w[0]); t.remove(); return p.catch(function () {}); })).then(paint);
   }
@@ -399,15 +537,22 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
     $('#demoBack').addEventListener('click', function () { demo.classList.remove('done'); });
   })();
 
-  /* ═════════ 10. 10장: 사업성 계산기 — 세 경우 모두 사업성 가정 모델의 원래 값 ═════════ */
-  var ORD = [50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1500, 2000, 2500, 3000, 4000, 5000, 6000, 8000, 10000];
+  /* ═════════ 10. 10장: 사업성 계산기 — 같은 10억, 결과만 다른 세 경우 (research/2026-11-24-1년10억-전개모델.md 6절) ═════════
+     광고비 = 광고로 받은 주문 × 1건 광고비. 광고로 받은 주문 = 전체 주문 × (1 − k). k = 전체 주문 중 광고 없이 들어오는 비율(입소문).
+     1년차 고정비(fix 의 첫 칸)는 맨 위 예산 두 목록에서 계산한다. 예산을 고치면 계산기도 따라온다. */
+  var ORD = [50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1500, 2000, 2500, 3000, 4000, 5000, 6000, 8000, 8700, 10000, 12000];
+  (function () { var r = document.getElementById('rOrders'); if (r) r.max = ORD.length - 1; })();
+  var FIX1 = (KKU_PAY_MONTH * KKU_MONTHS +
+    KKU_BUDGET.reduce(function (s, f) { return s + (f[2] ? 0 : f[1]); }, 0) +
+    (typeof KKU_BUDGET2 === 'undefined' ? [] : KKU_BUDGET2).reduce(function (s, f) { return s + (f[3] ? 0 : f[1]); }, 0)) / 1e4;
   var ST = {
-    cons: { name: '보수', price: 45000, orders: [100, 250, 500], grp: [[1, 60], [3, 80], [6, 100]], col: [[0, 0], [2, 1500], [4, 2000]], mi: .40, mg: .33, mc: .25, fix: [0, 2.2, 2.2], k: .1, ad: 15000 },
-    base: { name: '기준', price: 60000, orders: [300, 900, 2000], grp: [[3, 80], [8, 100], [20, 120]], col: [[1, 2000], [4, 3000], [8, 4000]], mi: .45, mg: .38, mc: .30, fix: [0, 2.6, 4.0], k: .3, ad: 15000 },
-    aggr: { name: '공격', price: 75000, orders: [800, 3000, 8000], grp: [[6, 100], [25, 120], [60, 150]], col: [[2, 3000], [8, 5000], [16, 8000]], mi: .50, mg: .43, mc: .35, fix: [0, 5.0, 12.0], k: .5, ad: 15000 }
+    cons: { name: '아쉬울 때', price: 75000, orders: [1500, 3000, 5000], grp: [[5, 90], [20, 110], [40, 130]], col: [[2, 10000], [5, 10000], [10, 10000]], mi: .43, mg: .37, mc: .33, fix: [FIX1, 12.0, 15.0], k: [.25, .25, .25], ad: [25000, 27000, 30000] },
+    base: { name: '계획', price: 80000, orders: [2000, 5000, 8700], grp: [[7, 94], [30, 120], [60, 150]], col: [[2, 10000], [8, 10000], [20, 10000]], mi: .45, mg: .38, mc: .35, fix: [FIX1, 15.08, 24.78], k: [.35, .35, .40], ad: [20000, 22000, 25000] },
+    aggr: { name: '잘될 때', price: 85000, orders: [3000, 8000, 12000], grp: [[10, 100], [40, 120], [80, 150]], col: [[3, 10000], [10, 12000], [20, 15000]], mi: .47, mg: .40, mc: .36, fix: [FIX1, 17.0, 27.0], k: [.50, .50, .55], ad: [15000, 17000, 19000] }
   };
-  var FIX1 = (KKU_PAY_MONTH * 12 + KKU_FIX_ETC_YEAR) / 1e4;
-  Object.keys(ST).forEach(function (k) { var f = ST[k].fix; f[0] = FIX1; for (var i = 1; i < 3; i++) f[i] = Math.max(f[i], f[i - 1]); });
+  window.__fix1 = FIX1;
+  /* ad(주문 1건 광고비)와 k(입소문)는 숫자 하나 또는 [1년차, 2년차, 3년차] 배열. 경우·연차를 고르면 그해 값이 막대에 들어온다 */
+  function yv(v, yi) { return Array.isArray(v) ? (v[yi] != null ? v[yi] : v[v.length - 1]) : v; }
   function calc(sc, yi, price, orders, k, ad) {
     var ind = price / 1.1 * orders * 12;
     var grp = sc.grp[yi][0] * sc.grp[yi][1] * 1e4 * 12 / 1.1;
@@ -416,13 +561,13 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
     var buy = orders * 12 * Math.max(0, 1 - k), adc = buy * ad, fix = sc.fix[yi] * 1e8;
     return { rev: rev, cm: cm, ad: adc, fix: fix, op: cm - adc - fix, buy: buy, per: price / 1.1 * sc.mi - Math.max(0, 1 - k) * ad };
   }
-  window.__calc = function (st, yi, o) { var s = ST[st]; o = o || {}; return calc(s, yi, o.price || s.price, o.orders || s.orders[yi], o.k == null ? s.k : o.k, o.ad || s.ad); };
+  window.__calc = function (st, yi, o) { var s = ST[st]; o = o || {}; return calc(s, yi, o.price || s.price, o.orders || s.orders[yi], o.k == null ? yv(s.k, yi) : o.k, o.ad || yv(s.ad, yi)); };
   function eok(v, sign) { var a = Math.abs(v) / 1e8; return (v < 0 ? '−' : (sign ? '+' : '')) + a.toFixed(2); }
   function won(v) { return Math.round(v).toLocaleString('ko-KR'); }
   (function () {
     var box = $('#calc'); if (!box) return;
     var st = 'base', yi = 2, rP = $('#rPrice'), rO = $('#rOrders'), rK = $('#rK'), rA = $('#rAd');
-    function load() { var s = ST[st]; rP.value = s.price; rO.value = ORD.indexOf(s.orders[yi]); rK.value = s.k; rA.value = s.ad; }
+    function load() { var s = ST[st]; rP.value = s.price; rO.value = ORD.indexOf(s.orders[yi]); rK.value = yv(s.k, yi); rA.value = yv(s.ad, yi); }
     function seg() {
       $$('#segStage button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-st') === st); });
       $$('#segYear button').forEach(function (b) { b.classList.toggle('on', +b.getAttribute('data-y') === yi); });
@@ -431,7 +576,8 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
       var s = ST[st], price = +rP.value, orders = ORD[+rO.value], k = +rK.value, ad = +rA.value, r = calc(s, yi, price, orders, k, ad);
       $('#oPrice').innerHTML = won(price) + '<small>원</small>';
       $('#oOrders').innerHTML = won(orders) + '<small>건</small>';
-      $('#oK').textContent = k.toFixed(2);
+      $('#oK').innerHTML = Math.round(k * 100) + '<small>%</small>';
+      var kn = $('#oKNote'); if (kn) kn.textContent = k <= 0 ? '0%면 모든 주문을 광고로 받습니다.' : Math.round(k * 100) + '%면 광고로 받은 주문 1건이 ' + (k / (1 - k)).toFixed(2) + '건을 더 데려옵니다.';
       $('#oAd').innerHTML = won(ad) + '<small>원</small>';
       $('#oTraffic').textContent = '하루 약 ' + Math.max(1, Math.round(orders * 12 / 365)) + '건입니다. 100명이 들어와 1.5명이 산다고 보면 한 달에 약 ' + (orders / .015 >= 1e4 ? (Math.round(orders / .015 / 1e3) / 10) + '만' : won(orders / .015)) + ' 명이 찾아와야 합니다.';
       $('#xRev').innerHTML = eok(r.rev) + '<small>억 원</small>';
@@ -455,15 +601,26 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
     $('#segYear').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; yi = +b.getAttribute('data-y'); load(); seg(); draw(); });
     [rP, rO, rK, rA].forEach(function (r) { r.addEventListener('input', draw); });
     load(); seg(); draw();
+    /* 표 아래 큰 문장: 흑자 시점을 내세우지 않고 재투자 → 3년차부터를 앞에 세운다. 숫자는 '계획' 경우에서 계산 */
     var say = $('#scSay');
-      if (say) { var bs = ST.base, rs = [0, 1, 2].map(function (y) { return calc(bs, y, bs.price, bs.orders[y], bs.k, bs.ad); }), be = rs.findIndex(function (r) { return r.op > 0; });
-        say.textContent = (be < 0 ? '기준대로 가도 3년 안에 흑자를 만들기는 어렵습니다. ' : '기준대로 가면 ' + (be + 1) + '년차에 흑자가 납니다. ') + '3년차에는 매출 ' + (rs[2].rev / 1e8).toFixed(1) + '억 원에 ' + (rs[2].op / 1e8).toFixed(2) + '억 원이 남습니다. 그래서 꾸밈은 자랑을 가장 먼저 챙깁니다.'; }
+    if (say) {
+      var bs = ST.base, rs = [0, 1, 2].map(function (y) { return calc(bs, y, bs.price, bs.orders[y], yv(bs.k, y), yv(bs.ad, y)); });
+      var e1 = function (v) { return (v / 1e8).toFixed(1); };
+      say.textContent = '1~2년차에 번 돈은 다시 광고와 사람에 넣습니다. 3년차부터 가파르게 오릅니다. ' + bs.name + '대로면 매출은 ' + e1(rs[0].rev) + '억, ' + e1(rs[1].rev) + '억, ' + e1(rs[2].rev) + '억 원으로 커지고 3년차에 ' + (rs[2].op >= 0 ? (rs[2].op / 1e8).toFixed(2) + '억 원이 남습니다.' : (-rs[2].op / 1e8).toFixed(2) + '억 원이 모자랍니다.');
+    }
+    var sn = $('#scNote');
+    if (sn) {
+      var w10 = function (v) { return (Math.round(v / 1e3) / 10) + '만'; };
+      var span = function (v, f, unit) { if (!Array.isArray(v)) return f(v) + unit; var lo = Math.min.apply(null, v), hi = Math.max.apply(null, v); return lo === hi ? f(lo) + unit : f(lo) + '~' + f(hi) + unit; };
+      var pc = function (v) { return Math.round(v * 100); };
+      sn.textContent = '단위는 억 원입니다. ' + ['cons', 'base', 'aggr'].map(function (k) { var s = ST[k]; return s.name + (/때$/.test(s.name) ? '는' : '은') + ' 주문 ' + w10(s.price) + ' 원 · 입소문 ' + span(s.k, pc, '%') + ' · 광고 1건 ' + span(s.ad, w10, ' 원'); }).join(', ') + '입니다. 숫자를 누르면 계산기에 그 값이 들어갑니다.';
+    }
       var tb = $('#scTbl tbody');
     if (tb) {
       tb.innerHTML = ['cons', 'base', 'aggr'].map(function (key) {
         var s = ST[key];
         return '<tr class="' + (key === 'base' ? 'hl' : '') + '"><td>' + s.name + '</td>' + [0, 1, 2].map(function (y) {
-          var r = calc(s, y, s.price, s.orders[y], s.k, s.ad);
+          var r = calc(s, y, s.price, s.orders[y], yv(s.k, y), yv(s.ad, y));
           return '<td><button type="button" data-st="' + key + '" data-y="' + y + '" class="cell' + (r.op < 0 ? ' neg' : '') + '">' + eok(r.rev) + ' / ' + eok(r.op, 1) + '</button></td>';
         }).join('') + '</tr>';
       }).join('');
@@ -475,17 +632,82 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
     }
   })();
 
-  /* 처음에 필요한 돈(만 원) */
+  /* 처음에 필요한 돈 + 이어서 더 넣는 돈(만 원). 전부 맨 위 설정에서 계산한다 */
   (function () {
     var el = $('#fund'); if (!el) return;
     var F = [['인건비 ' + KKU_MONTHS + '개월(월 ' + won(KKU_PAY_MONTH) + '만)', KKU_PAY_MONTH * KKU_MONTHS]].concat(KKU_BUDGET.map(function (f) { return /광고|공간/.test(f[0]) ? [f[0] + ' ' + KKU_MONTHS + '개월', f[1], f[2]] : f; }));
-    var tot = F.reduce(function (s, f) { return s + f[1]; }, 0), inv = F.reduce(function (s, f) { return s + (f[2] ? f[1] : 0); }, 0);
-    var mx = Math.max.apply(null, F.map(function (f) { return f[1]; }));
-    var man = function (v) { var e = Math.floor(v / 1e4), r = v % 1e4; return (e ? e + '억' : '') + (r ? (e ? ' ' : '') + won(r) + '만' : ''); };
-    el.innerHTML = F.map(function (f) { return '<div class="' + (f[2] ? 'inv' : '') + '"><span>' + f[0] + '</span><u><i style="left:0;width:' + (f[1] / mx * 100) + '%"></i></u><em>' + won(f[1]) + '만</em></div>'; }).join('') + '<div style="border-bottom:0;font-weight:800"><span>합계</span><u></u><em>' + man(tot) + '</em></div>';
-    var t = $('#fundTotal'); if (t) t.innerHTML = man(tot).replace(/(억|만)/g, '<small>$1</small>') + '<small>원</small>';
+    var F2 = (typeof KKU_BUDGET2 === 'undefined' ? [] : KKU_BUDGET2).filter(function (f) { return f && f[1] > 0; });
+    var SAY2 = typeof KKU_BUDGET2_SAY === 'undefined' ? '' : KKU_BUDGET2_SAY;
+    var sum = function (A) { return A.reduce(function (s, f) { return s + f[1]; }, 0); };
+    var tot = sum(F), tot2 = sum(F2), yr = tot + tot2, inv = F.reduce(function (s, f) { return s + (f[2] === 1 ? f[1] : 0); }, 0);
+    var mx = Math.max.apply(null, F.concat(F2).map(function (f) { return f[1]; }));
+    var man = function (v) { var e = Math.floor(v / 1e4), r = Math.round(v % 1e4); return (e ? e + '억' : '') + (r ? (e ? ' ' : '') + won(r) + '만' : '') || '0'; };
+    var big = function (v) { return man(v).replace(/(억|만)/g, '<small>$1</small>') + '<small>원</small>'; };
+    var pct = function (v, t) { return t ? Math.round(v / t * 100) : 0; };
+    /* 묶음: 설정 셋째 칸. 처음 나온 순서대로 g1, g2 … 묶음이 없는 줄은 '그 밖' */
+    var G = [], gi = {};
+    F2.forEach(function (f) { var k = f[2] || ''; if (!k) return; if (gi[k] == null) { gi[k] = G.length; G.push({ k: k, v: 0, c: 'g' + (G.length + 1) }); } G[gi[k]].v += f[1]; });
+    var rest = tot2 - G.reduce(function (s, g) { return s + g.v; }, 0);
+    var GA = G.concat(G.length && rest > 0 ? [{ k: '그 밖', v: rest, c: 'g0' }] : []);
+    function gbar(cls) {
+      if (!G.length) return '';
+      return '<div class="gbar ' + (cls || '') + '">' + GA.map(function (g) { return '<div class="' + g.c + '" style="flex:' + g.v + ' 1 0"><u></u><span><b>' + g.k + ' ' + pct(g.v, tot2) + '%</b><i>' + man(g.v) + '</i></span></div>'; }).join('') + '</div>';
+    }
+    function rows(A, T, grouped) {
+      return A.map(function (f) {
+        var g = grouped && f[2] && gi[f[2]] != null ? G[gi[f[2]]] : null;
+        return '<div class="' + (!grouped && f[2] === 1 ? 'inv' : '') + (g ? ' ' + g.c : (grouped && G.length ? ' g0' : '')) + '"><span>' + f[0] + '</span><u><i style="left:0;width:' + (f[1] / mx * 100) + '%"></i></u><em>' + won(f[1]) + '만<b>' + pct(f[1], T) + '%</b></em></div>';
+      }).join('') + '<div class="sum"><span>합계</span><u></u><em>' + man(T) + '</em></div>';
+    }
+    el.innerHTML = rows(F, tot);
+    var t = $('#fundTotal'); if (t) t.innerHTML = big(tot);
     var m = $('#fundMonths'); if (m) m.textContent = KKU_MONTHS + '개월';
     var n = $('#fundNote'); if (n) n.textContent = '첫 ' + KKU_MONTHS + '개월을 끌고 가는 돈입니다. 인건비 월 ' + won(KKU_PAY_MONTH) + '만 원을 넣었습니다. 빗금 줄이 재고인데, 전체의 ' + Math.round(inv / tot * 100) + '%뿐입니다. 돈은 재고가 아니라 사람과 브랜드에 씁니다.';
+    /* 이어서 더 넣는 돈 */
+    var span2 = (KKU_MONTHS + 1) + '~12개월', top = F2.slice().sort(function (a, b) { return b[1] - a[1]; }), nm = function (f) { return f[0].replace(/\s*\(.*?\)/g, ''); };
+    var gs = G.slice().sort(function (a, b) { return b.v - a.v; });
+    var e2 = $('#fund2'); if (e2) e2.innerHTML = rows(F2, tot2, true);
+    var eg = $('#fund2G'); if (eg) eg.innerHTML = gbar();
+    var t2 = $('#fund2Total'); if (t2) t2.innerHTML = big(tot2);
+    var m2 = $('#fund2Months'); if (m2) m2.textContent = span2;
+    var n2 = $('#fund2Note');
+    if (n2 && top.length) n2.textContent = span2 + '에 더 넣는 돈입니다. ' + (gs.length ? gs.map(function (g) { return g.k + '에 ' + pct(g.v, tot2) + '%'; }).join(', ') + '를 씁니다. ' : '가장 큰 줄은 ' + nm(top[0]) + '입니다. 전체의 ' + pct(top[0][1], tot2) + '%입니다. ') + '막대 길이는 왼쪽과 같은 눈금입니다.';
+    /* 1년 합계 화면 */
+    var y = $('#yrTotal'); if (y) y.textContent = man(yr);
+    var yl = $('#yrLead'); if (yl) yl.textContent = '첫 ' + KKU_MONTHS + '개월에 ' + man(tot) + ' 원으로 물건과 사이트를 세웁니다. ' + (SAY2 || '다음 ' + (12 - KKU_MONTHS) + '개월에 ' + man(tot2) + ' 원을 더 넣어 ' + top.slice(0, 3).map(nm).join(', ') + '에 힘을 싣습니다.');
+    var yb = $('#yr');
+    if (yb) {
+      var mo1 = tot / KKU_MONTHS, mo2 = tot2 / (12 - KKU_MONTHS), r100 = function (v) { return Math.round(v / 100) * 100; };
+      yb.innerHTML = '<div class="yr-bar"><div class="s1" style="flex:' + tot + ' 1 0"><i>1~' + KKU_MONTHS + '개월</i><b>' + big(tot) + '</b><span>한 달 약 ' + man(r100(mo1)) + ' 원</span></div>' +
+        '<div class="s2" style="flex:' + tot2 + ' 1 0"><i>' + span2 + '</i><b>+' + big(tot2) + '</b><span>한 달 약 ' + man(r100(mo2)) + ' 원</span>' + gbar('in') + '</div></div>' +
+        '<div class="yr-ax"><span>시작</span><span style="left:' + (tot / yr * 100) + '%">' + KKU_MONTHS + '개월 · 누적 ' + man(tot) + '</span><span>12개월 · 누적 ' + man(yr) + '</span></div>' +
+        '<p class="yr-say">한 달에 쓰는 돈이 ' + (mo2 / mo1).toFixed(1) + '배로 커집니다.</p>';
+    }
+    /* 09장 재고 화면 */
+    var sp = $('#stockPct'); if (sp) sp.textContent = pct(inv, tot) + '%';
+    var sm = $('#stockM'); if (sm) sm.textContent = KKU_MONTHS;
+    var sb = $('#stockBar'); if (sb) sb.style.width = (inv / tot * 100) + '%';
+    var s1 = $('#stockL1'); if (s1) s1.textContent = '재고 ' + man(inv) + ' 원';
+    var s2 = $('#stockL2'); if (s2) s2.textContent = '처음 ' + KKU_MONTHS + '개월 자금 ' + man(tot) + ' 원';
+  })();
+
+  /* 5년 그림: KKU_5Y 가 채워지면 화면이 나타난다. 한 해에 막대 둘(재투자 / 재투자 없음), 아래에 남는 돈 */
+  (function () {
+    var v = $('#fiveView'), el = $('#five'); if (!v || !el) return;
+    var A = (typeof KKU_5Y === 'undefined' ? [] : KKU_5Y).filter(function (r) { return r && r.length >= 2 && r[1] != null; });
+    if (!A.length) { v.hidden = true; return; }
+    v.hidden = false;
+    var two = A.some(function (r) { return r[3] != null; });
+    var mx = Math.max.apply(null, A.map(function (r) { return Math.max(r[1], r[3] || 0); }));
+    var op = function (x) { return x == null ? '' : '<u class="' + (x < 0 ? 'neg' : '') + '">' + (x < 0 ? '−' : '+') + Math.abs(x) + '</u>'; };
+    var bar = function (val, cls) { return val == null ? '' : '<span class="fv-c ' + cls + '"><b>' + val + '</b><i style="height:' + Math.max(1.5, val / mx * 100).toFixed(1) + '%"></i></span>'; };
+    el.className = 'five' + (two ? ' two' : '');
+    el.innerHTML = A.map(function (r) {
+      return '<div class="fv"><div class="fv-b">' + bar(r[1], 'a') + (two ? bar(r[3], 'b') : '') + '</div><em>' + r[0] + '년차</em><p>' + op(r[2]) + (two ? op(r[4]) : '') + '</p></div>';
+    }).join('');
+    var lg = $('#fiveLegend');
+    if (lg) lg.innerHTML = '<span class="a"><i></i>재투자</span>' + (two ? '<span class="b"><i></i>재투자 없음</span>' : '') + '<span class="t">막대는 매출, 아래 숫자는 남는 돈입니다. 단위는 억 원입니다.</span>';
+    var s = $('#fiveSay'); if (s) s.textContent = typeof KKU_5Y_SAY === 'undefined' ? '' : KKU_5Y_SAY;
   })();
 
   
@@ -527,8 +749,8 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
   window.__fitPrint = fitPrint;
   if (PRINT) { fitPrint(); window.addEventListener('load', fitPrint); }
   else {
-    window.addEventListener('beforeprint', function () { root.classList.add('is-print'); clearInterval(timer); $$('img[loading="lazy"]').forEach(function (i) { i.loading = 'eager'; }); fitPrint(); });
-    window.addEventListener('afterprint', function () { root.classList.remove('is-print'); unfitPrint(); run(); onScroll(); });
+    window.addEventListener('beforeprint', function () { root.classList.add('is-print'); clearInterval(timer); clearInterval(ntimer); clearInterval(ctimer); $$('img[loading="lazy"]').forEach(function (i) { i.loading = 'eager'; }); fitPrint(); });
+    window.addEventListener('afterprint', function () { root.classList.remove('is-print'); unfitPrint(); run(); runName(); runCover(); onScroll(); });
   }
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { paint(); if (PRINT) fitPrint(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { sizeNames(); sizeCover(); fitLocks(); paint(); if (PRINT) fitPrint(); });
 })();

@@ -1051,3 +1051,229 @@ html.is-print .gw-cols{height:230px}
 
 .tiles.four .ph{aspect-ratio:1/1}
 .todo-grid label b{font-weight:800;margin-right:6px}
+
+
+/* ═══════════════════════ 3판 (11-24) ═══════════════════════
+   이름은 가칭 → 큰 표기의 앞자리는 [이름 후보] 괄호. 공장 화면, 1년 예산 화면, 이름 후보 화면. */
+/* ── 앞 괄호: 이름 후보 ── */
+.lock .kk{display:flex;align-items:center}
+.kb.nb{gap:calc(var(--u)*.14)}
+.nbox{display:flex;align-items:center;justify-content:center;width:calc(var(--u)*var(--nw,2));height:100%}
+.nrot{display:block;white-space:nowrap;font:900 calc(var(--u)*.96)/1 var(--kr);letter-spacing:-.045em;color:inherit;transition:opacity .22s ease}
+.nrot.out{opacity:0}
+.nrot.is-svg svg{height:.92em;width:auto;display:block;fill:currentColor}
+.lock.mini .kb.nb{gap:1px}
+.lock.mini .nrot{font-size:calc(var(--u)*.98)}
+.lock.hero{--u:clamp(32px,8.3vw,114px)}
+.end .lock{--u:clamp(32px,8.3vw,114px)}
+.intro .stage-empty .lock{--u:clamp(28px,6.6vw,96px)}
+.map .us .lock{--u:clamp(20px,2.6vw,36px)}
+.rail-mk{gap:4px}
+.tbd{display:inline-block;font:700 clamp(12px,.17em,17px)/1 var(--body);letter-spacing:0;border:1px solid currentColor;border-radius:99px;padding:.42em .7em .4em;margin:0 .35em 0 .4em;vertical-align:.55em;white-space:nowrap;opacity:.72}
+
+/* ── 06 이름 후보 ── */
+.names{display:grid;grid-template-columns:repeat(var(--n,1),minmax(0,1fr));gap:0 clamp(14px,2vw,30px);margin-top:clamp(22px,4vh,40px);border-top:1px solid var(--fg)}
+.names.n1{grid-template-columns:minmax(0,560px)}
+.names.n2{grid-template-columns:repeat(2,minmax(0,520px))}
+.nc{padding-top:clamp(16px,2.6vh,26px);min-width:0}
+.nc+.nc{border-left:1px solid var(--rule);padding-left:clamp(14px,2vw,30px)}
+.nc .lock{--u:clamp(18px,calc(64vw / (var(--n,1) * 7.6)),58px);--nwf:1}
+.nc .lock .slot{width:calc(var(--u)*1.2)}
+.nfix{font:inherit;display:block}
+.nc-h i{display:block;font:500 clamp(13px,1.1vw,15px)/1.4 var(--body);font-style:normal;color:var(--sub);margin-top:10px}
+.nc dl{margin-top:clamp(14px,2.4vh,24px);border-top:1px solid var(--rule)}
+.nc dl>div{padding:11px 0;border-bottom:1px solid var(--rule)}
+.nc dt{font:600 12.5px/1.4 var(--body);color:var(--sub);margin-bottom:4px}
+.nc dd{font-size:clamp(14px,1.15vw,16.5px);line-height:1.55}
+.nc ul{list-style:none}
+.nc li{padding-left:.9em;position:relative}
+.nc li::before{content:"";position:absolute;left:0;top:.68em;width:.34em;height:.34em;background:currentColor;border-radius:50%;opacity:.55}
+
+/* ── 09 공장 ── */
+.fac{margin-top:clamp(22px,4vh,40px);border-top:1px solid var(--fg)}
+.fac-r{display:grid;grid-template-columns:minmax(0,3.1fr) minmax(0,2fr) minmax(0,5fr);gap:clamp(16px,2.6vw,40px);align-items:center;padding:clamp(14px,2.4vh,22px) 0;border-bottom:1px solid var(--rule)}
+.fac-r.wide{grid-template-columns:minmax(0,2.4fr) minmax(0,2.4fr) minmax(0,2.4fr) minmax(0,2.8fr)}
+.fac .fph{aspect-ratio:16/10;margin:0}
+.fac .fph img{filter:grayscale(1) contrast(1.06)}
+.fac-n i{font:600 14px/1.4 var(--body);font-style:normal;color:var(--sub)}
+.fac-n b{display:block;font:900 clamp(30px,3.6vw,54px)/1.05 var(--kr);letter-spacing:-.05em;margin:4px 0 10px}
+.fac-r.wide .fac-n b{font-size:clamp(24px,2.5vw,38px);letter-spacing:-.04em}
+.fac-n p{font-size:clamp(13.5px,1.1vw,15.5px);line-height:1.55;color:var(--sub)}
+.fac-k{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+.fac-k.k3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fac-r.wide .fac-k{grid-template-columns:minmax(0,1fr)}
+.fac-k>div{padding-left:clamp(12px,1.6vw,24px);border-left:1px solid var(--fg)}
+.fac-k dt{font:600 clamp(13px,1.1vw,15px)/1.4 var(--body);color:var(--sub)}
+.fac-k dd{font:900 clamp(46px,6.4vw,96px)/1 var(--kr);letter-spacing:-.06em;white-space:nowrap;margin-top:6px}
+.fac-k.k3 dd{font-size:clamp(40px,5.2vw,78px)}
+.fac-k dd small{font:800 .3em/1 var(--kr);letter-spacing:-.02em;margin-left:.18em}
+
+/* ── 10 1년 예산 ── */
+.yr{margin-top:clamp(26px,5vh,52px)}
+.yr-bar{display:flex;min-height:clamp(150px,24vh,220px);border:1px solid var(--fg)}
+.yr-bar>div{display:flex;flex-direction:column;justify-content:space-between;padding:clamp(14px,2vw,24px);min-width:0}
+.yr-bar .s1{background:var(--fg);color:var(--bg)}
+.yr-bar .s2{background:repeating-linear-gradient(-45deg,rgba(248,247,243,.13) 0 2px,transparent 2px 9px)}
+.yr-bar i{font:600 clamp(13px,1.1vw,15px)/1.3 var(--body);font-style:normal;opacity:.8}
+.yr-bar b{font:900 clamp(40px,7vw,104px)/1 var(--kr);letter-spacing:-.06em;white-space:nowrap}
+.yr-bar b small{font:800 .42em/1 var(--kr);letter-spacing:-.03em;margin-left:.04em}
+.yr-bar span{font-size:clamp(13px,1.15vw,16px);opacity:.85}
+.yr-ax{position:relative;display:flex;justify-content:space-between;height:28px;margin-top:8px;font:500 clamp(12px,1vw,14px)/1.4 var(--body);color:var(--sub)}
+.yr-ax span:nth-child(2){position:absolute;transform:translateX(-50%);white-space:nowrap}
+.yr-ax span:last-child{color:var(--fg);font-weight:700}
+.yr-say{font:900 clamp(20px,2.3vw,34px)/1.3 var(--kr);letter-spacing:-.04em;margin-top:clamp(14px,2.6vh,26px)}
+#yrTotal{white-space:nowrap}
+.fund div{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) 124px}
+.fund em b{display:inline-block;min-width:34px;margin-left:6px;font-weight:500;color:var(--sub);text-align:right}
+.fund .sum{border-bottom:0;font-weight:800}
+#fundView .note{min-height:4.8em}
+
+@media screen and (max-width:980px){
+  .names,.names.n1,.names.n2{grid-template-columns:minmax(0,1fr)}
+  .nc+.nc{border-left:0;padding-left:0;border-top:1px solid var(--fg);margin-top:22px}
+  .nc .lock{--u:11vw}
+  .fac-r,.fac-r.wide{grid-template-columns:minmax(0,1fr);gap:12px;padding:18px 0}
+  .fac-r.wide{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fac-r.wide .fac-n,.fac-r.wide .fac-k{grid-column:1/-1}
+  .fac-k>div:first-child{padding-left:0;border-left:0}
+  .fac-k dd{font-size:13vw}
+  .fac-k.k3 dd{font-size:10.5vw}
+  .yr-bar{flex-direction:column;min-height:0}
+  .yr-bar>div{flex:none!important;gap:8px}
+  .yr-bar .s2{min-height:46vw}
+  .yr-ax span:nth-child(2){display:none}
+  .fund div{grid-template-columns:minmax(0,1.5fr) minmax(0,.7fr) 112px;font-size:12.5px}
+  #fundView .note{min-height:0}
+  .lock.hero,.end .lock{--u:14vw}
+}
+
+/* ── 인쇄: 앞 괄호는 비운다 ── */
+html.is-print .nrot{visibility:hidden}
+html.is-print .lock.hero{--u:92px}
+html.is-print .fac .fph{aspect-ratio:16/10}
+
+.tbd{font:700 12.5px/1 var(--body);font-style:normal;vertical-align:.5em;margin:0 0 0 .5em;padding:.4em .7em .38em}
+.kb.nb{gap:calc(var(--u)*.1)}
+.fac-r.wide .fph{aspect-ratio:4/3}
+.nc-h .lock{min-height:clamp(30px,4.6vw,66px)}
+.intro .stage-empty .kb{--u:inherit}
+.demo-ask{min-width:0;max-width:100%}
+.demo-ask .lock{max-width:100%}
+
+/* 묶음 막대(사람·광고·그 밖) — 설정의 묶음 칸에서 그린다 */
+.gbar{display:flex;gap:3px;margin-top:14px}
+.gbar>div{min-width:0}
+.gbar u{display:block;height:14px;text-decoration:none;background:var(--fg)}
+.gbar .g2 u{background:var(--stone)}
+.gbar .g3 u{background:var(--mid)}
+.gbar .g0 u{background:none;border:1px solid var(--fg)}
+.gbar span{display:block;margin-top:7px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gbar b{display:block;font:800 clamp(14px,1.25vw,18px)/1.3 var(--kr);letter-spacing:-.02em}
+.gbar i{font:500 12.5px/1.3 var(--body);font-style:normal;color:var(--sub)}
+.gbar.in{margin-top:6px}
+.gbar.in u{height:10px}
+.gbar.in b{font-size:clamp(14px,1.3vw,19px)}
+.fund .g2 u i{background:var(--stone)}
+.fund .g3 u i{background:var(--mid)}
+.fund .g0 u i{background:none;border:1px solid var(--fg)}
+.yr-bar{min-height:clamp(200px,31vh,280px)}
+.yr-bar>div{gap:10px}
+#fundView .note{min-height:3.2em}
+
+.nm-h{font:900 clamp(21px,2.5vw,36px)/1.25 var(--kr);letter-spacing:-.04em;text-wrap:balance}
+#namesView .names{margin-top:clamp(16px,3vh,30px)}
+.names.n4 .nc dd,.names.n5 .nc dd{font-size:clamp(13px,1.02vw,14.5px);line-height:1.5}
+.names.n4 .nc dl>div,.names.n5 .nc dl>div{padding:9px 0}
+.names.n5{gap:0 clamp(10px,1.5vw,22px)}
+.names.n5 .nc+.nc{padding-left:clamp(10px,1.5vw,22px)}
+.nc-h i{letter-spacing:.04em}
+#namesView{padding-top:clamp(34px,5vh,56px);padding-bottom:clamp(28px,4vh,44px)}
+.lock.hero,.end .lock{--u:clamp(32px,8.8vw,124px)}
+@media screen and (max-width:980px){.lock.hero,.end .lock{--u:14vw}}
+
+
+/* ── 표지: 이름 후보 × 로고 시안 (앞 괄호만 바뀌고 'My [ ]'는 그대로) ── */
+.lock .kk[data-cover]{position:relative}
+.kb.nb::before,.kb.nb::after{border-width:calc(var(--u)*var(--bw,.136))}
+.nrot.cv{transition:none;display:flex;align-items:center;justify-content:center;line-height:1}
+.nrot.cv span{display:block}
+.nrot.cv svg{display:block;height:.96em;width:auto;fill:currentColor}
+/* 1 먹 — 가장 굵게, 붙여서 */
+.nrot.lg-1{font-weight:900;letter-spacing:-.06em}
+/* 2 열림 — 가늘고 넓게, 괄호도 가늘게 */
+.nrot.lg-2{font-weight:300;letter-spacing:.07em;transform:scaleX(1.12)}
+.nrot.lg-2 svg{height:.8em;transform:scaleX(.893)}
+.kb.nb.lg-2{--bw:.05}
+/* 3 겹 — 글자를 겹친다 */
+.nrot.lg-3{font-weight:800;letter-spacing:-.15em}
+.nrot.lg-3 span+span{text-shadow:-.065em 0 0 var(--bg,#EDEBE6)}
+.nrot.lg-3 span:last-child{margin-right:-.15em}
+.nrot.lg-3 svg{height:.92em}
+/* 4 길게 — 세로로 길고 좁게 */
+.nrot.lg-4{font-weight:800;letter-spacing:-.02em;transform:scale(.62,1.14)}
+.nrot.lg-4 svg{height:1.12em;transform:scale(1.613,.877)}
+.kb.nb.lg-4{--bw:.09}
+/* 5 가위집 — 굵은 글자에 칼집 */
+.nrot.lg-5{font-weight:900;letter-spacing:-.045em;-webkit-mask-image:linear-gradient(118deg,#000 0 31%,transparent 31% 33.4%,#000 33.4% 67%,transparent 67% 69.4%,#000 69.4%);mask-image:linear-gradient(118deg,#000 0 31%,transparent 31% 33.4%,#000 33.4% 67%,transparent 67% 69.4%,#000 69.4%)}
+.nrot.lg-5:has(svg){-webkit-mask-image:none;mask-image:none}
+.nrot.lg-5 svg{height:.92em}
+.ncap{position:absolute;left:0;bottom:calc(100% + clamp(8px,1.4vh,14px));font:500 clamp(11.5px,.95vw,13.5px)/1 var(--body);font-style:normal;letter-spacing:0;color:var(--mid);white-space:nowrap}
+.nrow{display:none}
+html.is-print .ncap{display:none}
+html.is-print .nrow{display:flex;align-items:center;gap:34px;margin-top:26px;padding-top:16px;border-top:1px solid var(--ink)}
+html.is-print .nri{display:flex;align-items:center;gap:8px;height:44px}
+html.is-print .nri .nrot{visibility:visible;font-size:30px}
+html.is-print .nri em{font:600 11px/1 var(--body);font-style:normal;color:var(--mid);border:1px solid currentColor;border-radius:99px;padding:3px 7px}
+@media screen and (max-width:980px){.ncap{font-size:11px}}
+.kb.nb::before,.kb.nb::after{width:calc(var(--u)*(.446 - var(--bw,.136)))}
+
+
+/* ── 10 K-케이스티파이 화면, 5년 그림 ── */
+.duo.kc{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:end}
+.kc .h1{margin-top:2px}
+.kc .tile .ph{aspect-ratio:4/3}
+.kc-k{display:grid;grid-template-columns:repeat(2,minmax(0,auto));justify-content:start;gap:0 clamp(24px,4vw,64px);margin-top:clamp(20px,3.6vh,36px);border-top:1px solid var(--fg);padding-top:clamp(14px,2.4vh,22px)}
+.kc-k dt{font:600 14px/1.4 var(--body);color:var(--sub)}
+.kc-k dd{font:900 clamp(44px,6vw,92px)/1 var(--kr);letter-spacing:-.06em;white-space:nowrap;margin-top:4px}
+.kc-k dd small{font:800 .3em/1 var(--kr);letter-spacing:-.02em;margin-left:.2em}
+#kcView .so{margin-top:clamp(22px,4vh,40px)}
+#oK small{font:700 .5em var(--kr);margin-left:2px}
+.five{display:flex;align-items:flex-end;gap:clamp(10px,2vw,30px);height:clamp(260px,44vh,400px);margin-top:clamp(24px,4vh,44px);border-bottom:1px solid var(--fg);padding-bottom:0}
+.fv{flex:1;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-end;height:100%;position:relative;text-align:left}
+.fv b{font:900 clamp(22px,3vw,44px)/1 var(--kr);letter-spacing:-.05em;margin-bottom:8px}
+.fv b small{font-size:.5em;margin-left:.1em}
+.fv-b{flex:1;display:flex;align-items:flex-end;min-height:0}
+.fv-b i{display:block;width:100%;background:var(--stone)}
+.fv.last .fv-b i{background:var(--fg)}
+.fv em{position:absolute;left:0;top:calc(100% + 8px);font:500 13px/1 var(--body);font-style:normal;color:var(--sub)}
+.fv u{position:absolute;left:0;top:calc(100% + 28px);font:700 14px/1 var(--body);text-decoration:none}
+.fv u.neg{color:var(--sub)}
+#fiveSay{margin-top:64px}
+@media screen and (max-width:980px){
+  .duo.kc{grid-template-columns:minmax(0,1fr)}
+  .kc-k dd{font-size:13vw}
+}
+.view[hidden]{display:none!important}
+
+
+/* ── 5년 그림 두 줄(재투자 / 재투자 없음) ── */
+.five-lg{display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px;margin-top:clamp(16px,3vh,28px);font:600 14px/1.4 var(--body)}
+.five-lg i{display:inline-block;width:14px;height:14px;margin-right:7px;vertical-align:-2px;background:var(--fg)}
+.five-lg .b i{background:var(--stone)}
+.five-lg .t{font-weight:400;color:var(--sub);font-size:13px}
+.five{margin-top:clamp(14px,2.4vh,24px);height:clamp(250px,42vh,390px)}
+.fv{justify-content:flex-end}
+.fv-b{flex:1;display:flex;align-items:flex-end;gap:5px;min-height:0;height:100%}
+.fv-c{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;min-width:0}
+.fv-c b{font:900 clamp(17px,2.2vw,34px)/1 var(--kr);letter-spacing:-.05em;margin-bottom:6px;white-space:nowrap}
+.five.two .fv-c b{font-size:clamp(14px,1.55vw,23px)}
+.fv-c i{display:block;width:100%;background:var(--fg)}
+.fv-c.b i{background:var(--stone)}
+.fv-c.b b{color:var(--sub)}
+.fv>b{display:none}
+.fv em{top:calc(100% + 9px)}
+.fv p{position:absolute;left:0;right:0;top:calc(100% + 30px);display:flex;gap:5px;font:700 clamp(12.5px,1.1vw,15px)/1 var(--body)}
+.fv p u{flex:1;position:static;text-decoration:none;white-space:nowrap}
+.fv p u+u{color:var(--sub)}
+.fv p u.neg{opacity:.75}
+#fiveSay{margin-top:72px}

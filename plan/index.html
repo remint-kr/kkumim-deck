@@ -20,7 +20,7 @@
 <div class="prog" aria-hidden="true"><i id="prog"></i></div>
 
 <nav class="rail" aria-label="장 목차">
-  <a href="#c0" class="rail-mk" aria-label="표지로"><span class="kk" data-logo></span><span class="rail-my">My</span><span class="kb"><span class="slot"></span></span></a>
+  <a href="#c0" class="rail-mk" aria-label="표지로"><span class="rail-my">My</span><span class="kb"><span class="slot"></span></span></a>
   <ol id="railList"></ol>
   <span></span>
 </nav>
@@ -55,11 +55,12 @@
       <div class="cover-mid">
         <h1 class="sr">꾸밈 My [ ] 소개서</h1>
         <div class="lock hero">
-          <span class="kk" data-logo></span><span class="my">My</span>
+          <span class="kk" data-cover></span><span class="my">My</span>
           <label class="kb"><span class="sr">괄호 안에 넣을 이름</span><span class="rotbox"><span class="rot" data-rot></span><input class="kin" id="coverIn" data-win type="text" maxlength="8" value="" autocomplete="off" autocapitalize="off" spellcheck="false"></span><span class="stack" data-stack aria-hidden="true"></span></label>
         </div>
         <p class="cover-sub" id="coverSlogan" data-slogan></p>
         <p class="cover-line">나의 스타, 팬, 가족, 펫, 차. 소중한 것을 위한 주문 제작(커스텀)입니다.</p>
+        <div class="nrow" data-nrow aria-hidden="true"></div>
       </div>
       <div class="cover-bot">
         <p class="chips"><span>괄호 안에 소중한 이름을 직접 적어 보세요.</span><button type="button" data-set="Star">Star</button><button type="button" data-set="Fan">Fan</button><button type="button" data-set="Family">Family</button><button type="button" data-set="Pet">Pet</button><button type="button" data-set="Car">Car</button><button type="button" data-set="최애">최애</button><button type="button" data-set="" class="again">다시 돌리기</button></p>
@@ -87,7 +88,7 @@
     <div class="wrap">
       <div class="rec"><span class="mk" data-mark></span><span>No. 01 꾸밈이 하는 일</span></div>
       <h2 class="say">꾸밈은<br>꾸며 주는 곳입니다.</h2>
-      <p class="eq"><span>꾸밈</span><i>=</i><span>꾸미다</span><i>=</i><span>커스텀</span></p>
+      <p class="eq"><span>꾸밈<em class="tbd">가칭</em></span><i>=</i><span>꾸미다</span><i>=</i><span>커스텀</span></p>
       <p class="lead">옷, 키링, 인형, 가죽 소품에 소중한 이름과 상징을 새겨 드립니다. 무엇을 새길지는 고객이 정합니다. 그래서 이름이 ‘꾸밈 My [ ]’입니다. 괄호 안은 고객이 채웁니다.</p>
     </div>
   </div>
@@ -242,7 +243,7 @@
       <div class="layers">
         <div class="l1"><i>넓은 시장</i><b>40조 원대</b><p>세계에서 이름을 새긴 선물에 한 해 쓰는 돈입니다. 10년 뒤에는 두 배 가까이 됩니다.</p></div>
         <div class="l2"><i>닿을 수 있는 시장</i><b>1조 원 넘게</b><p>같은 손님이 같은 종류의 물건에 이미 쓰는 돈입니다. 한국 기획사 굿즈, 일본 봉제인형, 마플을 더했습니다.</p></div>
-        <div class="l3"><i>처음 노리는 시장</i><b>약 20억 원</b><p>꾸밈의 3년차 목표입니다. 시장이 작아서 못 크는 일은 없습니다.</p></div>
+        <div class="l3"><i>처음 노리는 시장</i><b>약 20억 원</b><p>꾸밈의 첫해 매출 목표입니다. 시장이 작아서 못 크는 일은 없습니다.</p></div>
       </div>
       <p class="fine">원화로 바꾼 값과 더한 값은 어림입니다.</p>
     </div>
@@ -458,6 +459,12 @@
       </div>
     </div>
   </div>
+  <div class="view top" data-view id="namesView">
+    <div class="wrap">
+      <h3 class="nm-h">이름은 아직 고르는 중입니다. 틀은 정해졌습니다. ○○ My [ ].</h3>
+      <div class="names" id="names"></div>
+    </div>
+  </div>
 </section>
 
 <!-- ═══ 07 무엇을 만드나 ═══ -->
@@ -586,6 +593,45 @@
       <p class="lead">자수, 금속, 봉제, 가죽. 만드는 곳과 중간 단계 없이 거래합니다. 인쇄 판촉물과 눈으로 구별되는 물건이 여기서 나옵니다. 마플에서 자수는 따로 요청해 가능한지 답을 받아야 하는 작업입니다. 꾸밈은 자수가 기본입니다.</p>
     </div>
   </div>
+  <div class="view" data-view id="facView">
+    <div class="wrap">
+      <h3 class="h2">국내 최고의 신발 공장,<br>의류 공장과 함께합니다.</h3>
+      <div class="fac">
+        <div class="fac-r">
+          <span class="thumb fph" data-ref="fac-shoe-1"></span>
+          <div class="fac-n"><i>신발 공장</i><b>보림</b><p>주문이 늘면 인원을 보충해 더 늘릴 수 있습니다.</p></div>
+          <dl class="fac-k">
+            <div><dt>커스텀 하루</dt><dd>500<small>족</small></dd></div>
+            <div><dt>한 달</dt><dd>1.5<small>만 족</small></dd></div>
+          </dl>
+        </div>
+        <div class="fac-r">
+          <span class="thumb fph" data-ref="fac-gar-1"></span>
+          <div class="fac-n"><i>의류 공장</i><b>다온</b><p>자수와 그래픽(프린트)을 모두 합니다.</p></div>
+          <dl class="fac-k k3">
+            <div><dt>하루</dt><dd>1<small>만 장</small></dd></div>
+            <div><dt>자수 하루</dt><dd>1<small>천 벌</small></dd></div>
+            <div><dt>그래픽 하루</dt><dd>1<small>만 벌</small></dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="view" data-view id="facView2">
+    <div class="wrap">
+      <h3 class="h2">가죽과 금속도<br>국내 최고의 공장에서 만듭니다.</h3>
+      <div class="fac">
+        <div class="fac-r wide">
+          <span class="thumb fph" data-ref="fac-laser"></span>
+          <span class="thumb fph" data-ref="fac-leather"></span>
+          <div class="fac-n"><i>가죽, 금속</i><b>Made in Korea</b><p>가죽도 금속도 국내 공장 라인업으로 꾸렸습니다.</p></div>
+          <dl class="fac-k">
+            <div><dt>레이저 각인 하루</dt><dd>5<small>천 개</small></dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="view plate" data-view>
     <div class="wrap">
       <div class="pl-row four" data-plates="bp-257353475-6,bx-4-5,bx-5-2,bp-258082169-14" data-labels="자수 · 수놓다|금속 · 새기다|봉제 · 달다|가죽 · 찍다"></div>
@@ -597,11 +643,11 @@
       <div class="stock" style="margin-top:0">
         <div>
           <h3 class="h2">재고에 묶이는 돈이 적습니다.</h3>
-          <p class="p" style="margin-top:14px">쌓아 두는 것은 이름을 새기기 전의 빈 옷과 빈 키링뿐입니다. 주력 두 품목으로 시작하면 시작 자금 가운데 <b>6~9%</b>만 재고에 들어갑니다. 나머지는 사람, 사이트, 브랜드, 광고에 씁니다.</p>
+          <p class="p" style="margin-top:14px">쌓아 두는 것은 이름을 새기기 전의 빈 물건뿐입니다. 처음 <span id="stockM">6</span>개월 자금 가운데 <b id="stockPct">9%</b>만 재고에 들어갑니다. 나머지는 사람, 사이트, 브랜드, 광고에 씁니다.</p>
         </div>
         <div>
-          <div class="stock-bar" aria-hidden="true"><i class="r" style="width:9%"></i><span></span></div>
-          <div class="stock-l"><span>빈 옷과 빈 키링 400만~750만 원</span><span>시작 자금 4,380만~1억 2,250만 원</span></div>
+          <div class="stock-bar" aria-hidden="true"><i class="r" id="stockBar" style="width:9%"></i><span></span></div>
+          <div class="stock-l"><span id="stockL1">재고 2,700만 원</span><span id="stockL2">처음 6개월 자금 3억 원</span></div>
         </div>
       </div>
     </div>
@@ -610,9 +656,27 @@
 
 <!-- ═══ 10 사업성 ═══ -->
 <section class="ch bg-ink" id="c10" data-n="10" data-t="사업성">
-  <div class="view top" data-view>
+  <div class="view" data-view id="kcView">
     <div class="wrap">
       <div class="rec"><span class="mk" data-mark></span><span>No. 10 사업성</span></div>
+      <div class="duo kc">
+        <div>
+          <p class="eyebrow">우리가 보는 그림</p>
+          <h2 class="h1">K-케이스티파이</h2>
+          <p class="lead">케이스티파이는 고객이 채우는 틀이 곧 브랜드가 된 회사입니다. 꾸밈은 그 길을 이름 새김으로 갑니다.</p>
+          <dl class="kc-k">
+            <div><dt>시작</dt><dd>20<small>만 달러쯤</small></dd></div>
+            <div><dt>11년 뒤 한 해 매출</dt><dd>3<small>억 달러 이상</small></dd></div>
+          </dl>
+          <p class="note">2011년에 시작했습니다. 3억 달러는 2022년 매출이고 창업자가 밝힌 숫자입니다.</p>
+        </div>
+        <figure class="tile" data-ref="frame-02"></figure>
+      </div>
+      <p class="so" style="font-size:clamp(20px,2.3vw,34px);max-width:26em">1~2년차는 번 돈을 다시 넣어 키우는 때입니다. 3년차부터 가파르게 오릅니다.</p>
+    </div>
+  </div>
+  <div class="view top" data-view>
+    <div class="wrap">
       <h2 class="h1">한 건 팔면<br>절반 가까이 남습니다.</h2>
       <p class="lead">꾸밈이 돈을 버는지는 두 가지에 달렸습니다. 자랑이 주문을 얼마나 데려오는지, 광고비가 얼마나 드는지. 둘 다 첫 판매에서 바로 잴 수 있습니다.</p>
       <div class="unit">
@@ -649,11 +713,11 @@
       <div class="calc" id="calc">
         <div>
           <div class="segs"><div><p class="seg-l">경우</p>
-          <div class="seg" id="segStage" role="group" aria-label="경우"><button type="button" data-st="cons">보수</button><button type="button" data-st="base" class="on">기준</button><button type="button" data-st="aggr">공격</button></div></div><div><p class="seg-l">연차</p><div class="seg" id="segYear" role="group" aria-label="연차"><button type="button" data-y="0">1년차</button><button type="button" data-y="1">2년차</button><button type="button" data-y="2" class="on">3년차</button></div></div></div>
-          <div class="sl"><label for="rPrice"><span>평균 주문 금액</span><output id="oPrice"></output></label><input class="rng" id="rPrice" type="range" min="30000" max="120000" step="1000" value="60000"><p>부가세 포함입니다.</p></div>
-          <div class="sl"><label for="rOrders"><span>한 달 개인 주문 수</span><output id="oOrders"></output></label><input class="rng" id="rOrders" type="range" min="0" max="22" step="1" value="15"><p id="oTraffic"></p></div>
-          <div class="sl"><label for="rK"><span>주문 1건이 데려오는 새 주문(입소문)</span><output id="oK"></output></label><input class="rng" id="rK" type="range" min="0" max="0.9" step="0.05" value="0.3"><p>자랑을 보고 들어온 주문입니다. 이만큼은 광고비 없이 따라옵니다.</p></div>
-          <div class="sl"><label for="rAd"><span>주문 1건을 받는 데 드는 광고비</span><output id="oAd"></output></label><input class="rng" id="rAd" type="range" min="5000" max="40000" step="1000" value="15000"><p>실제 값은 첫 광고에서 바로 나옵니다.</p></div>
+          <div class="seg" id="segStage" role="group" aria-label="경우"><button type="button" data-st="cons">아쉬울 때</button><button type="button" data-st="base" class="on">계획</button><button type="button" data-st="aggr">잘될 때</button></div></div><div><p class="seg-l">연차</p><div class="seg" id="segYear" role="group" aria-label="연차"><button type="button" data-y="0">1년차</button><button type="button" data-y="1">2년차</button><button type="button" data-y="2" class="on">3년차</button></div></div></div>
+          <div class="sl"><label for="rPrice"><span>평균 주문 금액</span><output id="oPrice"></output></label><input class="rng" id="rPrice" type="range" min="30000" max="120000" step="1000" value="80000"><p>부가세 포함입니다.</p></div>
+          <div class="sl"><label for="rOrders"><span>한 달 개인 주문 수</span><output id="oOrders"></output></label><input class="rng" id="rOrders" type="range" min="0" max="24" step="1" value="15"><p id="oTraffic"></p></div>
+          <div class="sl"><label for="rK"><span>전체 주문 중 광고 없이 들어오는 비율(입소문)</span><output id="oK"></output></label><input class="rng" id="rK" type="range" min="0" max="0.9" step="0.05" value="0.35"><p id="oKNote">35%면 광고로 받은 주문 1건이 0.54건을 더 데려옵니다.</p></div>
+          <div class="sl"><label for="rAd"><span>주문 1건을 받는 데 드는 광고비</span><output id="oAd"></output></label><input class="rng" id="rAd" type="range" min="5000" max="40000" step="1000" value="20000"><p>실제 값은 첫 광고에서 바로 나옵니다.</p></div>
         </div>
         <div class="out" aria-live="polite">
           <div class="out-main">
@@ -686,11 +750,32 @@
         <thead><tr><th>경우</th><th>1년차 매출과 남는 돈</th><th>2년차</th><th>3년차</th></tr></thead>
         <tbody></tbody>
       </table>
-      <p class="note">단위는 억 원입니다. 보수는 주문 4.5만 원 · 입소문 0.1, 기준은 주문 6만 원 · 입소문 0.3, 공격은 주문 7.5만 원 · 입소문 0.5입니다. 광고비는 셋 다 주문 1건에 1.5만 원으로 봤습니다. 숫자를 누르면 계산기에 그 값이 들어갑니다.</p>
-      <p class="so" id="scSay" style="font-size:clamp(22px,2.7vw,40px)">기준대로 가면 3년차에 흑자가 납니다. 3년차에는 매출 18.6억 원에 1.24억 원이 남습니다. 그래서 꾸밈은 자랑을 가장 먼저 챙깁니다.</p>
+      <p class="note" id="scNote">단위는 억 원입니다. 아쉬울 때는 주문 7.5만 원 · 입소문 25% · 광고 1건 2.5만 원, 계획은 주문 8만 원 · 입소문 35% · 광고 1건 2만 원, 잘될 때는 주문 8.5만 원 · 입소문 50% · 광고 1건 1.5만 원입니다. 숫자를 누르면 계산기에 그 값이 들어갑니다.</p>
+      <p class="so" id="scSay" style="font-size:clamp(21px,2.5vw,37px);max-width:24em">1~2년차에 번 돈은 다시 광고와 사람에 넣습니다. 3년차부터 가파르게 오릅니다. 계획대로면 매출은 20.0억, 54.8억, 94.2억 원으로 커지고 3년차에 6.76억 원이 남습니다.</p>
+    </div>
+  </div>
+  <div class="view" data-view id="fiveView" hidden>
+    <div class="wrap">
+      <h3 class="h2">5년을 그리면 이렇습니다.</h3>
+      <div class="five-lg" id="fiveLegend"></div>
+      <div class="five" id="five"></div>
+      <p class="so" id="fiveSay" style="font-size:clamp(20px,2.3vw,34px)"></p>
     </div>
   </div>
   <div class="view" data-view>
+    <div class="wrap">
+      <h3 class="h2">꾸밈이 보여 드릴 숫자는 둘입니다.</h3>
+      <p class="so" style="font-size:clamp(20px,2.3vw,34px);max-width:26em">하나는 한 건에 남는 돈입니다. 또 하나는 자랑 1건이 데려오는 주문 수입니다. 이 두 숫자가 서면 단체 주문과 공식 협업이 그 위에 올라갑니다. 두 숫자 모두 첫 판매에서 바로 나옵니다.</p>
+    </div>
+  </div>
+  <div class="view" data-view id="yrView">
+    <div class="wrap">
+      <h3 class="h1">1년에 <span id="yrTotal">10억</span>,<br>빠르게 깃발을 꽂습니다.</h3>
+      <p class="lead" id="yrLead"></p>
+      <div class="yr" id="yr"></div>
+    </div>
+  </div>
+  <div class="view top" data-view id="fundView">
     <div class="wrap">
       <div class="cols2" style="margin-top:0">
         <div>
@@ -700,8 +785,11 @@
           <div class="fund" id="fund"></div>
         </div>
         <div>
-          <h3 class="h3">꾸밈이 보여 드릴 숫자 둘</h3>
-          <p class="p" style="margin-top:12px;font-size:16.5px">하나는 <b>한 건에 남는 돈</b>입니다. 또 하나는 <b>자랑 1건이 데려오는 주문 수</b>입니다. 이 두 숫자가 서면 단체 주문과 공식 협업이 그 위에 올라갑니다. 두 숫자 모두 첫 판매에서 바로 나옵니다.</p>
+          <h3 class="h3">이어서 더 넣는 돈</h3>
+          <p class="bigrange" style="margin-top:12px"><span id="fund2Total">7억<small>원</small></span> <span id="fund2Months" style="font-size:.45em;opacity:.7">7~12개월</span></p>
+          <p class="note" id="fund2Note" style="margin-top:8px"></p>
+          <div id="fund2G"></div>
+          <div class="fund" id="fund2"></div>
         </div>
       </div>
       <p class="fine">예상치이며 실제 원가에 따라 달라집니다.</p>

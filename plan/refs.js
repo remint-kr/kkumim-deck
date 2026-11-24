@@ -478,3 +478,16 @@ window.KKU_REF_PICKS.plate.sweat = [{ id: 'bp-242997523-1', label: '등판 자�
 window.KKU_REF_PICKS.plate.leather = [{ id: 'leather-03', label: '이니셜' }, { id: 'bp-258082169-14', label: '눌러 찍은 표식' }, { id: 'bp-258082169-15', label: '상자' }];
 /* 6장 '한눈에 보는 벽' 12장. color 에 든 것만 색을 살리고 나머지는 흑백 */
 window.KKU_REF_PICKS.wall = { ids: ['bp-242997523-1', 'bp-257882649-12', 'bp-258290711-3', 'bp-220344165-2', 'bp-258006511-10', 'bp-257353475-18', 'bp-220344165-8', 'bp-247245675-9', 'bp-220344165-5', 'bp-258461701-4', 'bp-257882649-15', 'bp-258082169-15'], color: ['bp-242997523-1', 'bp-258006511-10', 'bp-258290711-3'] };
+
+/* ── 3판: 09장 공장 화면의 실사 (Unsplash 직링크) ──
+   보림·다온의 실제 사진이 아니라 같은 종류 공장의 대표 사진입니다. 실제 공장 사진이 오면 img 만 바꿉니다.
+   남의 사진이므로 external:false — 외부용(?mode=external)에서는 회색 칸으로 바뀝니다. */
+window.KKU_REF_GROUPS['factory'] = { title: '공장 대표 사진', where: '09장 공장' };
+window.KKU_REFS.push(
+  { id: 'fac-shoe-1', group: 'factory', title: '신발 생산 라인', sub: '라인에서 신발을 만드는 작업자', when: 'Unsplash', href: 'https://unsplash.com/photos/xCvZSAVl6t4', img: 'https://images.unsplash.com/photo-1768550996860-2d8666f4c0bb?auto=format&fit=crop&w=1440&q=80', mono: true, external: false },
+  { id: 'fac-shoe-2', group: 'factory', title: '신발 성형 기계', sub: '기계에 물린 신발', when: 'Unsplash', href: 'https://unsplash.com/photos/u-GvJ7H11kA', img: 'https://images.unsplash.com/photo-1768550996792-48143ef1ea70?auto=format&fit=crop&w=1440&q=80', mono: true, external: false },
+  { id: 'fac-gar-1', group: 'factory', title: '봉제 공장 전경', sub: '봉제 라인과 작업자', when: 'Unsplash', href: 'https://unsplash.com/photos/dh1EDCiQ6lg', img: 'https://images.unsplash.com/photo-1741176505800-caaa3a52631a?auto=format&fit=crop&w=1440&q=80', mono: true, external: false },
+  { id: 'fac-gar-2', group: 'factory', title: '자수 기계 줄', sub: '여러 머리 자수기와 작업자', when: 'Unsplash', href: 'https://unsplash.com/photos/l82eoWofs58', img: 'https://images.unsplash.com/photo-1772351721310-0aa6b2d5ee49?auto=format&fit=crop&w=1440&q=80', mono: true, external: false },
+  { id: 'fac-laser', group: 'factory', title: '레이저 가공기', sub: '금속판 위에서 작업 중인 레이저', when: 'Unsplash', href: 'https://unsplash.com/photos/4enstJBOGww', img: 'https://images.unsplash.com/photo-1764114235896-034c8772de01?auto=format&fit=crop&w=1440&q=80', mono: true, external: false },
+  { id: 'fac-leather', group: 'factory', title: '가죽 작업대', sub: '가죽 조각과 도구', when: 'Unsplash', href: 'https://unsplash.com/photos/eM-gOy8AiQk', img: 'https://images.unsplash.com/photo-1644258676710-ffb99d7d7a1b?auto=format&fit=crop&w=1440&q=80', mono: true, external: false }
+);
