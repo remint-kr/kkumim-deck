@@ -466,11 +466,13 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
   onScroll();
 
   /* ═════════ 6. 03장: 회사별 성장 — 확인된 해만 기둥으로 그린다(사이를 잇지 않는다) ═════════ */
+  /* 외화 → 원화 어림(억 원). 환율은 2026년 11월 기준: 1달러 ≈ 1,344원, 1위안 ≈ 201원, 100엔 ≈ 845원 */
+  function krwEok(v) { return v >= 10000 ? (Math.round(v / 1000) / 10).toLocaleString('ko-KR') + '조' : (v >= 1000 ? Math.round(v / 100) * 100 : Math.round(v)).toLocaleString('ko-KR') + '억'; }
   var GROW = [
-    { n: '팝마트', u: '억 위안', say: '4년 만에 8배', pts: [[2021, 44.9], [2022, 46.2], [2023, 63.0], [2024, 130.4], [2025, 371.2]] },
+    { n: '팝마트', u: '억 위안', krw: 201, say: '4년 만에 8배', pts: [[2021, 44.9], [2022, 46.2], [2023, 63.0], [2024, 130.4], [2025, 371.2]] },
     { n: '하이브 굿즈', u: '억 원', say: '2년 만에 75% 증가', pts: [[2023, 3256], [2024, 4202], [2025, 5706]] },
-    { n: '케이스티파이', u: '억 달러', say: '2년 만에 2.4배', plus: 1, pts: [[2020, 1.25], [2021, null], [2022, 3]] },
-    { n: '빌드어베어', u: '억 달러', say: '코로나 전보다 57% 커졌습니다', pts: [[2019, 3.39], [2020, 2.55], [2021, 4.12], [2022, 4.68], [2023, 4.86], [2024, 4.96], [2025, 5.30]] },
+    { n: '케이스티파이', u: '억 달러', krw: 1344, say: '2년 만에 2.4배', plus: 1, pts: [[2020, 1.25], [2021, null], [2022, 3]] },
+    { n: '빌드어베어', u: '억 달러', krw: 1344, say: '코로나 전보다 57% 커졌습니다', pts: [[2019, 3.39], [2020, 2.55], [2021, 4.12], [2022, 4.68], [2023, 4.86], [2024, 4.96], [2025, 5.30]] },
     { n: '마플', u: '억 원', say: '3년 만에 1.8배', pts: [[2022, 186], [2023, 341], [2024, 503], [2025, 343]] }
   ];
   (function () {
@@ -481,7 +483,7 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
       var first = vals[0], last = vals[vals.length - 1];
       return '<figure class="gw"><div class="gw-cols" style="--n:' + g.pts.length + '">' + g.pts.map(function (p) {
         return '<span class="' + (p[1] == null ? 'none' : (p === last ? 'last' : '')) + '"><i style="height:' + (p[1] == null ? 0 : Math.max(3, p[1] / max * 100)).toFixed(1) + '%"></i><em>' + String(p[0]).slice(2) + '</em></span>';
-      }).join('') + '</div><figcaption><b>' + g.n + '</b><strong>' + g.say + '</strong><span>' + first[0] + '년 ' + fmt(first[1]) + (g.plus ? ' 이상' : '') + ' → ' + last[0] + '년 ' + fmt(last[1]) + (g.plus ? ' 이상' : '') + ' ' + g.u + '</span></figcaption></figure>';
+      }).join('') + '</div><figcaption><b>' + g.n + '</b><strong>' + g.say + '</strong><span>' + first[0] + '년 ' + fmt(first[1]) + (g.plus ? ' 이상' : '') + ' → ' + last[0] + '년 ' + fmt(last[1]) + (g.plus ? ' 이상' : '') + ' ' + g.u + (g.krw ? ' (한화 약 ' + krwEok(last[1] * g.krw) + ' 원)' : '') + '</span></figcaption></figure>';
     }).join('');
   })();
 
