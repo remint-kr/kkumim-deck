@@ -361,6 +361,8 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
   /* ═════════ 3. 인트로 영상 — 파일이 없으면 꾸밈 My [ ] 만 ═════════ */
   (function () {
     var stage = $('#introStage'); if (!stage) return;
+    var ICON = { play: '<path d="M8 5.5v13l11-6.5z"/>', pause: '<path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/>', again: '<path d="M12 5a7 7 0 1 1-6.6 4.7l1.9.7A5 5 0 1 0 12 7v3L7.5 6 12 2z"/>' };
+    function setPlay(k, t) { play.innerHTML = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">' + ICON[k] + '</svg><span>' + t + '</span>'; }
     var sec = stage.closest('.intro'), poster = $('#introPoster'), vid = $('#introVid'), play = $('#introPlay'), snd = $('#introSound');
     function posterOk() { stage.classList.add('has-poster'); sec.classList.remove('no-poster'); }
     function posterNo() { poster.style.display = 'none'; vid.removeAttribute('poster'); }
@@ -370,10 +372,14 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
     if (PRINT) { vid.remove(); return; }
     vid.addEventListener('loadedmetadata', function () { stage.classList.add('has-video'); });
     vid.addEventListener('error', function () { stage.classList.remove('has-video'); });
-    vid.addEventListener('play', function () { stage.classList.add('playing'); play.textContent = '멈춤'; });
-    vid.addEventListener('pause', function () { stage.classList.remove('playing'); play.textContent = '재생'; });
-    vid.addEventListener('ended', function () { stage.classList.remove('playing'); play.textContent = '다시 보기'; });
+    vid.addEventListener('play', function () { stage.classList.add('playing'); setPlay('pause', '멈춤'); });
+    vid.addEventListener('pause', function () { stage.classList.remove('playing'); setPlay('play', '재생'); });
+    vid.addEventListener('ended', function () { stage.classList.remove('playing'); setPlay('again', '다시 보기'); });
     vid.src = '../intro/kkumim-intro.mp4';
+    var big = $('#introBig');
+    function toggle() { if (vid.paused) { var p = vid.play(); if (p && p.catch) p.catch(function () {}); } else vid.pause(); }
+    if (big) big.addEventListener('click', function () { if (vid.muted) { vid.muted = false; snd.textContent = '소리 끄기'; snd.setAttribute('aria-pressed', 'true'); } toggle(); });
+    vid.addEventListener('click', toggle);
     play.addEventListener('click', function () { if (vid.paused) { var p = vid.play(); if (p && p.catch) p.catch(function () {}); } else vid.pause(); });
     snd.addEventListener('click', function () { vid.muted = !vid.muted; snd.textContent = vid.muted ? '소리 켜기' : '소리 끄기'; snd.setAttribute('aria-pressed', vid.muted ? 'false' : 'true'); });
     window.addEventListener('beforeprint', function () { vid.pause(); });

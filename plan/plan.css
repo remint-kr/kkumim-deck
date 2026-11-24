@@ -1292,3 +1292,22 @@ html.cover-fixed .cover-note{display:block;margin-top:clamp(10px,1.6vh,16px);fon
 html.cover-fixed .ncap,html.cover-fixed .nrow{display:none!important}
 html.cover-fixed .cvb,html.cover-fixed .cvb .nrot,html.cover-fixed .cvb svg{color:inherit;fill:currentColor;opacity:1}
 html.is-print.cover-fixed .cvb .nrot{visibility:visible}
+
+/* 인트로: 가운데 큰 재생 버튼 */
+.stage-big{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:none;flex-direction:column;align-items:center;gap:14px;background:none;border:0;color:var(--paper);cursor:pointer;z-index:3}
+.stage.has-video .stage-big{display:flex}
+.stage.playing .stage-big{display:none}
+.stage-big svg{width:clamp(64px,7vw,96px);height:clamp(64px,7vw,96px);padding:clamp(18px,2vw,26px);padding-left:calc(clamp(18px,2vw,26px) + 4px);box-sizing:border-box;border-radius:50%;background:var(--paper);fill:var(--ink);transition:transform .2s ease}
+.stage-big b{font:700 clamp(13px,1.05vw,15px)/1 var(--kr);letter-spacing:.02em}
+.stage-big .sb-ring{position:absolute;top:0;width:clamp(64px,7vw,96px);height:clamp(64px,7vw,96px);border-radius:50%;border:2px solid var(--paper);animation:sbPulse 1.8s ease-out infinite;pointer-events:none}
+.stage-big:hover svg,.stage-big:focus-visible svg{transform:scale(1.08)}
+.stage-big:focus-visible{outline:none}
+.stage-big:focus-visible svg{box-shadow:0 0 0 4px var(--ink),0 0 0 7px #FF4A1C}
+@keyframes sbPulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.6);opacity:0}}
+@media (prefers-reduced-motion:reduce){.stage-big .sb-ring{animation:none;opacity:.5}}
+.stage-ui button{display:inline-flex;align-items:center;gap:8px}
+.stage-ui .ic{width:14px;height:14px;fill:currentColor;flex:none}
+.stage-ui button:focus-visible{outline:2px solid #FF4A1C;outline-offset:3px}
+html.is-print .stage-big{display:none!important}
+.stage.has-video:not(.playing)::after{content:"";position:absolute;inset:0;background:rgba(17,17,15,.55);z-index:2;pointer-events:none}
+.stage-ui{z-index:3}
