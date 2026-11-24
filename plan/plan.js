@@ -3,6 +3,16 @@
    ── 여기만 바꾸면 됩니다 ─────────────────────────────────────────── */
 /* 슬로건. 이 한 줄을 바꾸면 표지·끝 화면·장 머리가 전부 바뀝니다. */
 var KKU_SLOGAN = '소중한 건, 이름을 새긴다.';
+/* 처음에 필요한 돈 (만 원). 금액을 고치거나 줄을 더하고 빼면 합계·재고 비율·막대·계산기 고정비가 저절로 맞춰집니다.
+   [항목, 금액, 재고면 1]. 인건비 줄은 아래 두 값으로 계산됩니다. */
+var KKU_MONTHS = 6;            // 처음 버티는 기간(개월)
+var KKU_PAY_MONTH = 1500;      // 인건비, 한 달(만 원)
+var KKU_FIX_ETC_YEAR = 3000;   // 인건비 말고 해마다 드는 고정비(작업 공간 월 200만 × 12 + 사이트 운영 600만, 만 원) — 계산기 1년차 고정비에 쓰임
+var KKU_BUDGET = [
+  ['광고와 시험 판매', 5500], ['사이트(주문·새김 미리보기)', 3000], ['브랜드 디자인', 2000],
+  ['촬영(제품·착용·영상)', 1500], ['빈 옷과 빈 키링', 1500, 1], ['견본', 1200], ['빈 인형과 가죽', 1200, 1],
+  ['작업 공간', 1200], ['상표(국내·해외)', 1000], ['포장재', 700], ['법률 검토', 500], ['예비비', 1700]
+];
 /* 표지에서만: 괄호 안 낱말을 직접 고르거나 적었을 때 아랫줄을 이 문장으로 바꿉니다. 없으면 위 슬로건. */
 var KKU_SLOGAN_BY_WORD = {
   'Star': '최애 이름을 새겨 드립니다.', '최애': '최애 이름을 새겨 드립니다.',
@@ -392,10 +402,12 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
   /* ═════════ 10. 10장: 사업성 계산기 — 세 경우 모두 사업성 가정 모델의 원래 값 ═════════ */
   var ORD = [50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1500, 2000, 2500, 3000, 4000, 5000, 6000, 8000, 10000];
   var ST = {
-    cons: { name: '보수', price: 45000, orders: [100, 250, 500], grp: [[1, 60], [3, 80], [6, 100]], col: [[0, 0], [2, 1500], [4, 2000]], mi: .40, mg: .33, mc: .25, fix: [.5, 1.0, 1.6], k: .1, ad: 15000 },
-    base: { name: '기준', price: 60000, orders: [300, 900, 2000], grp: [[3, 80], [8, 100], [20, 120]], col: [[1, 2000], [4, 3000], [8, 4000]], mi: .45, mg: .38, mc: .30, fix: [.7, 2.0, 4.0], k: .3, ad: 15000 },
-    aggr: { name: '공격', price: 75000, orders: [800, 3000, 8000], grp: [[6, 100], [25, 120], [60, 150]], col: [[2, 3000], [8, 5000], [16, 8000]], mi: .50, mg: .43, mc: .35, fix: [1.5, 5.0, 12.0], k: .5, ad: 15000 }
+    cons: { name: '보수', price: 45000, orders: [100, 250, 500], grp: [[1, 60], [3, 80], [6, 100]], col: [[0, 0], [2, 1500], [4, 2000]], mi: .40, mg: .33, mc: .25, fix: [0, 2.2, 2.2], k: .1, ad: 15000 },
+    base: { name: '기준', price: 60000, orders: [300, 900, 2000], grp: [[3, 80], [8, 100], [20, 120]], col: [[1, 2000], [4, 3000], [8, 4000]], mi: .45, mg: .38, mc: .30, fix: [0, 2.6, 4.0], k: .3, ad: 15000 },
+    aggr: { name: '공격', price: 75000, orders: [800, 3000, 8000], grp: [[6, 100], [25, 120], [60, 150]], col: [[2, 3000], [8, 5000], [16, 8000]], mi: .50, mg: .43, mc: .35, fix: [0, 5.0, 12.0], k: .5, ad: 15000 }
   };
+  var FIX1 = (KKU_PAY_MONTH * 12 + KKU_FIX_ETC_YEAR) / 1e4;
+  Object.keys(ST).forEach(function (k) { var f = ST[k].fix; f[0] = FIX1; for (var i = 1; i < 3; i++) f[i] = Math.max(f[i], f[i - 1]); });
   function calc(sc, yi, price, orders, k, ad) {
     var ind = price / 1.1 * orders * 12;
     var grp = sc.grp[yi][0] * sc.grp[yi][1] * 1e4 * 12 / 1.1;
@@ -443,7 +455,10 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
     $('#segYear').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; yi = +b.getAttribute('data-y'); load(); seg(); draw(); });
     [rP, rO, rK, rA].forEach(function (r) { r.addEventListener('input', draw); });
     load(); seg(); draw();
-    var tb = $('#scTbl tbody');
+    var say = $('#scSay');
+      if (say) { var bs = ST.base, rs = [0, 1, 2].map(function (y) { return calc(bs, y, bs.price, bs.orders[y], bs.k, bs.ad); }), be = rs.findIndex(function (r) { return r.op > 0; });
+        say.textContent = (be < 0 ? '기준대로 가도 3년 안에 흑자를 만들기는 어렵습니다. ' : '기준대로 가면 ' + (be + 1) + '년차에 흑자가 납니다. ') + '3년차에는 매출 ' + (rs[2].rev / 1e8).toFixed(1) + '억 원에 ' + (rs[2].op / 1e8).toFixed(2) + '억 원이 남습니다. 그래서 꾸밈은 자랑을 가장 먼저 챙깁니다.'; }
+      var tb = $('#scTbl tbody');
     if (tb) {
       tb.innerHTML = ['cons', 'base', 'aggr'].map(function (key) {
         var s = ST[key];
@@ -463,8 +478,14 @@ var KKU_ROT_MS = 620;   /* 낱말이 바뀌는 빠르기(밀리초) */
   /* 처음에 필요한 돈(만 원) */
   (function () {
     var el = $('#fund'); if (!el) return;
-    var F = [['인건비 6개월(월 1,500만)', 9000], ['광고와 시험 판매 6개월', 5500], ['사이트(주문·새김 미리보기)', 3000], ['브랜드 디자인', 2000], ['촬영(제품·착용·영상)', 1500], ['빈 옷과 빈 키링', 1500, 1], ['견본', 1200], ['빈 인형과 가죽', 1200, 1], ['작업 공간 6개월', 1200], ['상표(국내·해외)', 1000], ['포장재', 700], ['법률 검토', 500], ['예비비', 1700]];
-    el.innerHTML = F.map(function (f) { return '<div class="' + (f[2] ? 'inv' : '') + '"><span>' + f[0] + '</span><u><i style="left:0;width:' + (f[1] / 90) + '%"></i></u><em>' + won(f[1]) + '만</em></div>'; }).join('') + '<div style="border-bottom:0;font-weight:800"><span>합계</span><u></u><em>3억</em></div>';
+    var F = [['인건비 ' + KKU_MONTHS + '개월(월 ' + won(KKU_PAY_MONTH) + '만)', KKU_PAY_MONTH * KKU_MONTHS]].concat(KKU_BUDGET.map(function (f) { return /광고|공간/.test(f[0]) ? [f[0] + ' ' + KKU_MONTHS + '개월', f[1], f[2]] : f; }));
+    var tot = F.reduce(function (s, f) { return s + f[1]; }, 0), inv = F.reduce(function (s, f) { return s + (f[2] ? f[1] : 0); }, 0);
+    var mx = Math.max.apply(null, F.map(function (f) { return f[1]; }));
+    var man = function (v) { var e = Math.floor(v / 1e4), r = v % 1e4; return (e ? e + '억' : '') + (r ? (e ? ' ' : '') + won(r) + '만' : ''); };
+    el.innerHTML = F.map(function (f) { return '<div class="' + (f[2] ? 'inv' : '') + '"><span>' + f[0] + '</span><u><i style="left:0;width:' + (f[1] / mx * 100) + '%"></i></u><em>' + won(f[1]) + '만</em></div>'; }).join('') + '<div style="border-bottom:0;font-weight:800"><span>합계</span><u></u><em>' + man(tot) + '</em></div>';
+    var t = $('#fundTotal'); if (t) t.innerHTML = man(tot).replace(/(억|만)/g, '<small>$1</small>') + '<small>원</small>';
+    var m = $('#fundMonths'); if (m) m.textContent = KKU_MONTHS + '개월';
+    var n = $('#fundNote'); if (n) n.textContent = '첫 ' + KKU_MONTHS + '개월을 끌고 가는 돈입니다. 인건비 월 ' + won(KKU_PAY_MONTH) + '만 원을 넣었습니다. 빗금 줄이 재고인데, 전체의 ' + Math.round(inv / tot * 100) + '%뿐입니다. 돈은 재고가 아니라 사람과 브랜드에 씁니다.';
   })();
 
   
